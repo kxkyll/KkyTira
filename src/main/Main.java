@@ -6,6 +6,7 @@
 package main;
 
 
+import java.io.IOException;
 import kayttoliittyma.TekstiLiittyma;
 
 /**
@@ -17,7 +18,7 @@ import kayttoliittyma.TekstiLiittyma;
 public class Main {
 
       
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
       
         TekstiLiittyma tekstiKaytto = new TekstiLiittyma();
