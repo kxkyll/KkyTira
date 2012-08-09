@@ -23,6 +23,7 @@ public class TekstiLiittyma {
  *
  * Käyttäjältä kysytään ladattavia tiedostoja, kunnes annettu merkkijono on tyhjä
  * Käyttäjältä kysytään haettavia sanoja, kunnes annettu merkkijono on tyhjä.
+ * @throws IOException 
  */
     public void kaynnisty() throws IOException {
         boolean jatka = true;
@@ -43,7 +44,7 @@ public class TekstiLiittyma {
                             System.out.println(rivi);
                         }
                     }
-                    if (ladattavaTiedosto.endsWith("htm")) {
+                    if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
                     }
                 }
@@ -58,6 +59,8 @@ public class TekstiLiittyma {
 
     /**
      * Kysytään käyttäjältä haettavat sanat
+     * 
+     * @return String Käyttäjän antama hakusana
      */
     public String kysySana() {
         System.out.print("Anna haettavat sanat: ");
@@ -66,6 +69,8 @@ public class TekstiLiittyma {
 
     /**
      * Kysytään käyttäjältä ladattava tiedosto
+     * 
+     * @return String Käyttäjän antama tiedostonnimi
      */
     public String kysyTiedosto() {
         System.out.print("Anna ladattavat tiedostot : ");
