@@ -7,7 +7,11 @@ package sanaindeksi;
 /**
  *
  * @author Kati
+ * 
+ * Tutkitaan käyttäjän antamien parametrien  perusteella minkälainen puurakenne tiedostosta muodostetaan
  */
 public class MuodostaPuu {
+    
+    
     
 }
