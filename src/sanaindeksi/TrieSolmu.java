@@ -36,32 +36,63 @@ public class TrieSolmu {
         this.lapsiLista = new LinkedList<TrieSolmu>();
     }
 
+    /**
+     *
+     * @param sananVikaKirjain ilmaisee onko tämä kirjain jonkin sanan viimeinen kirjain
+     */
     public void setSananVikaKirjain(boolean sananVikaKirjain) {
         this.sananVikaKirjain = sananVikaKirjain;
     }
 
+    /**
+     *
+     * @param tiedostoNumero ilmaisee missä tiedostossa sana esiintyy
+     * @param Rivinumero ilmaisee monennellako rivillä kyseisessä tiedostossa sana esiintyy
+     */
     public void setSijaintiTekstissa(int tiedostoNumero, int Rivinumero) {
         this.sijaintiTekstissa.add(Rivinumero);
     }
 
+    /**
+     *
+     * @return palauttaa TrieSolmun tallentaman kirjaimen arvon
+     */
     public char getKirjain() {
         return kirjain;
     }
 
+    /**
+     *
+     * @return palauttaa onko kirjain jonkin sanan viimeinen kirjain
+     */
     public boolean isSananVikaKirjain() {
         return sananVikaKirjain;
     }
 
+    /**
+     *
+     * @return palauttaa TrieSolmun lapsilistan
+     */
     public LinkedList<TrieSolmu> getLapsiLista() {
         return lapsiLista;
     }
 
+    /**
+     *
+     * @return palauttaa sanan sijaintitaulun
+     */
     public ArrayList<Integer> getSijaintiTekstissa() {
         return sijaintiTekstissa;
     }
 
     
 
+    /**
+     *
+     * @param kirjain, metodi etsii onko solmun jonkin lapsisolmun arvona tämä kirjain
+     * @return, metodi palauttaa sen lapsisolmun viitteen jonka arvona parametrina saatu kirjain on,
+     * jos kyseistä kirjainta ei ole minkään lapsisolmun arvona, metodi palauttaa arvon null
+     */
     public TrieSolmu etsiKirjain(char kirjain) {
         TrieSolmu lapsi = null;
         for (Iterator<TrieSolmu> it = this.lapsiLista.iterator(); it.hasNext();) {
@@ -73,6 +104,12 @@ public class TrieSolmu {
         return lapsi;
     }
 
+    /**
+     *
+     * @param uusiLapsi, lisättävä lapsiSolmu
+     * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen lapsiSolmuun,
+     * muutoin metodi palauttaa arvon null
+     */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
         boolean onnistui = this.lapsiLista.add(uusiLapsi);
         if (onnistui) {

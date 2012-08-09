@@ -24,7 +24,7 @@ public class Trie {
         if (sana.length() > 0) {
             sana = sana.replace(",.!?", ""); //todo: voiko välimerkit vain poistaa, 
             // vai pitäisikö niistä tehdä omat sanat ?
-            // entäpä erikoismerkit, kuten @£$€{[]}\"#¤%&/()=*
+            // entäpä erikoismerkit, kuten @£$€{[]}\"'#¤%&/()=*
             sana = sana.toLowerCase();
             System.out.println("sana: " +sana);
             vikanKirjaimenPaikka = sana.length() - 1;
