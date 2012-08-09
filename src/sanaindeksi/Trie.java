@@ -17,6 +17,7 @@ public class Trie {
     }
 
     public Trie lisaaSana(String sana, int tiedostoNumero, int riviNumero) {
+        System.out.println("lisaaSana");
         TrieSolmu nykyinenSolmu;
         int vikanKirjaimenPaikka;
 
@@ -25,6 +26,7 @@ public class Trie {
             // vai pitäisikö niistä tehdä omat sanat ?
             // entäpä erikoismerkit, kuten @£$€{[]}\"#¤%&/()=*
             sana = sana.toLowerCase();
+            System.out.println("sana: " +sana);
             vikanKirjaimenPaikka = sana.length() - 1;
             
             // eka viritelmä
@@ -39,15 +41,20 @@ public class Trie {
             nykyinenSolmu = juuriSolmu;
             for (int i = 0; i < sana.length(); i++) {
                 TrieSolmu uusiLapsi = nykyinenSolmu.etsiKirjain(sana.charAt(i)); // etsitään löytyykö solmua joka jo sisältää kirjaimen
+               
                 if (uusiLapsi != null) {
+                    System.out.println("uusiLapsi ei null");
                     nykyinenSolmu = uusiLapsi; // löytyi: mennään hakupuun seuraavalle tasolle
                 } else {
+                    System.out.println("uusiLapsi on null");
                     uusiLapsi = new TrieSolmu (sana.charAt(i)); // ei löytynyt: tehdään uusi lapsi
                     nykyinenSolmu = nykyinenSolmu.lisaaLapsi(uusiLapsi); // lisätään uusi lapsi lapsilistalle
                     
                 }
                 if (i == vikanKirjaimenPaikka) {
+                    System.out.println("vika kirjain");
                     nykyinenSolmu.setSananVikaKirjain(true);
+                    System.out.println("vikakirjain astettu");
                     nykyinenSolmu.setSijaintiTekstissa(tiedostoNumero, riviNumero);
                 }
             }

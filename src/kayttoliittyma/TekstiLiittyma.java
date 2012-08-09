@@ -27,6 +27,7 @@ public class TekstiLiittyma {
  * @throws IOException 
  */
     public void kaynnisty() throws IOException {
+        MuodostaPuu muodostaPuu;
         boolean jatka = true;
         boolean lisaaTiedostoja = true;
         int tiedostoLaskuri = 0;
@@ -46,7 +47,8 @@ public class TekstiLiittyma {
                         for (String rivi:luettuTiedosto) {
                             System.out.println(rivi);
                         }
-                        MuodostaPuu muodostaPuu = new MuodostaPuu (luettuTiedosto, tiedostoLaskuri);
+                        System.out.println("tiedostoLaskuri: " +tiedostoLaskuri);
+                        muodostaPuu = new MuodostaPuu (luettuTiedosto, tiedostoLaskuri);
                     }
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);

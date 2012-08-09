@@ -41,7 +41,7 @@ public class TrieSolmu {
     }
 
     public void setSijaintiTekstissa(int tiedostoNumero, int Rivinumero) {
-        this.sijaintiTekstissa.add(tiedostoNumero, Rivinumero);
+        this.sijaintiTekstissa.add(Rivinumero);
     }
 
     public char getKirjain() {
