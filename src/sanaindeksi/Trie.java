@@ -16,7 +16,7 @@ public class Trie {
         this.juuriSolmu = new TrieSolmu(' ');
     }
 
-    public void lisaaSana(String sana) {
+    public Trie lisaaSana(String sana, int tiedostoNumero, int riviNumero) {
         TrieSolmu nykyinenSolmu;
         int vikanKirjaimenPaikka;
 
@@ -48,13 +48,12 @@ public class Trie {
                 }
                 if (i == vikanKirjaimenPaikka) {
                     nykyinenSolmu.setSananVikaKirjain(true);
+                    nykyinenSolmu.setSijaintiTekstissa(tiedostoNumero, riviNumero);
                 }
             }
 
-
-
-
         }
+        return this;
 
     }
 

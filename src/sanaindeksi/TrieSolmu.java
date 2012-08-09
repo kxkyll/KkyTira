@@ -4,6 +4,7 @@
  */
 package sanaindeksi;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -18,7 +19,7 @@ public class TrieSolmu {
 
     private char kirjain;
     private boolean sananVikaKirjain;
-    private int[][] sijaintiTekstissa;
+    private ArrayList<Integer> sijaintiTekstissa;
     private LinkedList<TrieSolmu> lapsiLista;
 
     /**
@@ -31,7 +32,7 @@ public class TrieSolmu {
     public TrieSolmu(char kirjain) {
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
-        this.sijaintiTekstissa = new int[100][100]; //todo: Mieti miten sanojen sijainti kannattaa tallettaa
+        this.sijaintiTekstissa = new ArrayList<Integer>();
         this.lapsiLista = new LinkedList<TrieSolmu>();
     }
 
@@ -39,8 +40,8 @@ public class TrieSolmu {
         this.sananVikaKirjain = sananVikaKirjain;
     }
 
-    public void setSijaintiTekstissa(int[][] sijaintiTekstissa) {
-        this.sijaintiTekstissa = sijaintiTekstissa;
+    public void setSijaintiTekstissa(int tiedostoNumero, int Rivinumero) {
+        this.sijaintiTekstissa.add(tiedostoNumero, Rivinumero);
     }
 
     public char getKirjain() {
@@ -55,9 +56,11 @@ public class TrieSolmu {
         return lapsiLista;
     }
 
-    public int[][] getSijaintiTekstissa() {
+    public ArrayList<Integer> getSijaintiTekstissa() {
         return sijaintiTekstissa;
     }
+
+    
 
     public TrieSolmu etsiKirjain(char kirjain) {
         TrieSolmu lapsi = null;

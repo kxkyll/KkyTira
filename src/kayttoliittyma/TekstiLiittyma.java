@@ -7,6 +7,7 @@ package kayttoliittyma;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import sanaindeksi.MuodostaPuu;
 import tiedostonkasittely.TiedostonLuku;
 
 /**
@@ -28,6 +29,7 @@ public class TekstiLiittyma {
     public void kaynnisty() throws IOException {
         boolean jatka = true;
         boolean lisaaTiedostoja = true;
+        int tiedostoLaskuri = 0;
         ArrayList<String> luettuTiedosto = new ArrayList<String>();
         System.out.println("Anna ladattavan tiedoston hakupolku ja nimi (tyhjä merkkijono lopettaa)");
         while (jatka) {
@@ -38,11 +40,13 @@ public class TekstiLiittyma {
                 } else {
                     System.out.println("Annoit tiedoston: " +ladattavaTiedosto);
                     if (ladattavaTiedosto.endsWith("txt") ) {
+                        tiedostoLaskuri ++;
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
                         System.out.println("Tiedoston sisältö:");
                         for (String rivi:luettuTiedosto) {
                             System.out.println(rivi);
                         }
+                        MuodostaPuu muodostaPuu = new MuodostaPuu (luettuTiedosto, tiedostoLaskuri);
                     }
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
