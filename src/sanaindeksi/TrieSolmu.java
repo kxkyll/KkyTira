@@ -94,14 +94,27 @@ public class TrieSolmu {
      * jos kyseistä kirjainta ei ole minkään lapsisolmun arvona, metodi palauttaa arvon null
      */
     public TrieSolmu etsiKirjain(char kirjain) {
-        TrieSolmu lapsi = null;
-        for (Iterator<TrieSolmu> it = this.lapsiLista.iterator(); it.hasNext();) {
-            lapsi = it.next();
-            if (lapsi.getKirjain() == kirjain) {
-                return lapsi;
+//        TrieSolmu lapsi = null;
+        
+        for (TrieSolmu l: lapsiLista) {
+            System.out.println("l.getKirjain: " +l.getKirjain());
+            System.out.println("kirjain: "+kirjain);
+            if (l.getKirjain() == kirjain) {
+                System.out.println("kirjain täsmää");
+                return l;
             }
         }
-        return lapsi;
+//        for (Iterator<TrieSolmu> it = this.lapsiLista.iterator(); it.hasNext();) {
+//            lapsi = it.next();
+//            System.out.println("lapsi.getKirjain: " +lapsi.getKirjain());
+//            System.out.println("kirjain: " +kirjain);
+//            if (lapsi.getKirjain() == kirjain) {
+//                System.out.println("sama on");
+//                return lapsi;
+//            }
+//        }
+        
+        return null;
     }
 
     /**

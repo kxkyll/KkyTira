@@ -48,7 +48,7 @@ public class Trie {
                 } else {
                     System.out.println("uusiLapsi on null");
                     uusiLapsi = new TrieSolmu(sana.charAt(i)); // ei löytynyt: tehdään uusi lapsi
-                    System.out.println("uusiLapsi kirjain: " +uusiLapsi.getKirjain());
+                    System.out.println("uusiLapsi kirjain: " + uusiLapsi.getKirjain());
                     nykyinenSolmu = nykyinenSolmu.lisaaLapsi(uusiLapsi); // lisätään uusi lapsi lapsilistalle
 
                 }
@@ -70,19 +70,33 @@ public class Trie {
         System.out.println("etsittävä sana: " + sana);
 
         TrieSolmu nykyinenSolmu;
+        TrieSolmu lapsiSolmu;
 
         if (sana.length() > 0) {
             sana = sana.toLowerCase();
             nykyinenSolmu = juuriSolmu;
-            while (nykyinenSolmu != null) {
+            System.out.println("sana.length: " +sana.length());
+       //     while (nykyinenSolmu != null) {
                 for (int i = 0; i < sana.length(); i++) {
-                    nykyinenSolmu = nykyinenSolmu.etsiKirjain(sana.charAt(i));
-                    if (nykyinenSolmu == null) {
-                        System.out.println("kirjainta ei löytynyt");
-                        return false; // kirjainta sisältävää solmua ei löynynyt
+                    System.out.println("indeksi i: " + i);
+                    System.out.println("etsittävä kirjain: " + sana.charAt(i));
+ 
+                    lapsiSolmu = nykyinenSolmu.etsiKirjain(sana.charAt(i));
+                    
+                    if (lapsiSolmu != null) {
+                        nykyinenSolmu = lapsiSolmu;
+                        System.out.println("lapsi ei ole null");
+                    } else {
+                        
+
                     }
+                    //nykyinenSolmu = nykyinenSolmu.etsiKirjain(sana.charAt(i));
+//                    if (nykyinenSolmu == null ) {
+//                        System.out.println("kirjainta ei löytynyt");
+//                        return false; // kirjainta sisältävää solmua ei löynynyt
+//                    }
                 }
-            }
+       //     }
             if (nykyinenSolmu.isSananVikaKirjain()) {
                 System.out.println("on vika kirjain");
                 return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
