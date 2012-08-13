@@ -65,7 +65,26 @@ public class Trie {
     }
 
     public boolean etsiSana(String sana) {
-        boolean loytyikoSana = false;
-        return loytyikoSana;
+        TrieSolmu nykyinenSolmu;
+        
+        if (sana.length()>0) {
+            sana = sana.toLowerCase();
+            nykyinenSolmu = juuriSolmu;
+            while (nykyinenSolmu != null) {
+                for (int i = 0; i < sana.length(); i++) {
+                    nykyinenSolmu = nykyinenSolmu.etsiKirjain(sana.charAt(i));
+                    if (nykyinenSolmu == null) {
+                        return false; // kirjainta sisältävää solmua ei löynynyt
+                    }
+                }
+            }
+            if (nykyinenSolmu.isSananVikaKirjain()) {
+                return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
+            }
+           
+        }
+        
+        
+        return false;
     }
 }

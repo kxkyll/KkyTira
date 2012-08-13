@@ -27,7 +27,7 @@ public class TekstiLiittyma {
  * @throws IOException 
  */
     public void kaynnisty() throws IOException {
-        MuodostaPuu muodostaPuu;
+        MuodostaPuu muodostaPuu = new MuodostaPuu();
         boolean jatka = true;
         boolean lisaaTiedostoja = true;
         int tiedostoLaskuri = 0;
@@ -59,7 +59,12 @@ public class TekstiLiittyma {
             String haettavaSana = kysySana();
             if (haettavaSana.isEmpty() || haettavaSana.contentEquals(" ")) {
                 jatka = false;
-            }
+            } 
+                Boolean sanaLoytyi =  muodostaPuu.haeSana(haettavaSana);
+                if (sanaLoytyi) {
+                    System.out.println("sana: " +haettavaSana +"löytyi" );
+                }
+            
         }
     }
 

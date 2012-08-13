@@ -29,6 +29,10 @@ public class MuodostaPuu {
         trie = perusTrie(tiedostoNumero);
     }
 
+    public MuodostaPuu() {
+        
+    }
+
     /**
      * Luodaan perusTrie, jossa lapset on talletettu linkitetylle listalle
      *
@@ -54,5 +58,9 @@ public class MuodostaPuu {
         }
 
         return trie;
+    }
+
+    public boolean haeSana(String haettavaSana) {
+        return trie.etsiSana(haettavaSana);
     }
 }
