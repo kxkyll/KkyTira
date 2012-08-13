@@ -99,6 +99,7 @@ public class Trie {
        //     }
             if (nykyinenSolmu.isSananVikaKirjain()) {
                 System.out.println("on vika kirjain");
+                //return nykyinenSolmu.getSijaintiTekstissa();
                 return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
             }
 
