@@ -26,9 +26,9 @@ public class Trie {
             // vai pitäisikö niistä tehdä omat sanat ?
             // entäpä erikoismerkit, kuten @£$€{[]}\"'#¤%&/()=*
             sana = sana.toLowerCase();
-            System.out.println("sana: " +sana);
+            System.out.println("sana: " + sana);
             vikanKirjaimenPaikka = sana.length() - 1;
-            
+
             // eka viritelmä
 //            char ekaKirjain = sana.charAt(0);
 //            nykyinenSolmu = juuriSolmu.etsiKirjain(ekaKirjain);
@@ -41,15 +41,16 @@ public class Trie {
             nykyinenSolmu = juuriSolmu;
             for (int i = 0; i < sana.length(); i++) {
                 TrieSolmu uusiLapsi = nykyinenSolmu.etsiKirjain(sana.charAt(i)); // etsitään löytyykö solmua joka jo sisältää kirjaimen
-               
+
                 if (uusiLapsi != null) {
                     System.out.println("uusiLapsi ei null");
                     nykyinenSolmu = uusiLapsi; // löytyi: mennään hakupuun seuraavalle tasolle
                 } else {
                     System.out.println("uusiLapsi on null");
-                    uusiLapsi = new TrieSolmu (sana.charAt(i)); // ei löytynyt: tehdään uusi lapsi
+                    uusiLapsi = new TrieSolmu(sana.charAt(i)); // ei löytynyt: tehdään uusi lapsi
+                    System.out.println("uusiLapsi kirjain: " +uusiLapsi.getKirjain());
                     nykyinenSolmu = nykyinenSolmu.lisaaLapsi(uusiLapsi); // lisätään uusi lapsi lapsilistalle
-                    
+
                 }
                 if (i == vikanKirjaimenPaikka) {
                     System.out.println("vika kirjain");
@@ -65,26 +66,31 @@ public class Trie {
     }
 
     public boolean etsiSana(String sana) {
+        System.out.println("Metodi etsiSana");
+        System.out.println("etsittävä sana: " + sana);
+
         TrieSolmu nykyinenSolmu;
-        
-        if (sana.length()>0) {
+
+        if (sana.length() > 0) {
             sana = sana.toLowerCase();
             nykyinenSolmu = juuriSolmu;
             while (nykyinenSolmu != null) {
                 for (int i = 0; i < sana.length(); i++) {
                     nykyinenSolmu = nykyinenSolmu.etsiKirjain(sana.charAt(i));
                     if (nykyinenSolmu == null) {
+                        System.out.println("kirjainta ei löytynyt");
                         return false; // kirjainta sisältävää solmua ei löynynyt
                     }
                 }
             }
             if (nykyinenSolmu.isSananVikaKirjain()) {
+                System.out.println("on vika kirjain");
                 return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
             }
-           
+
         }
-        
-        
+
+        System.out.println("ei löydy ei");
         return false;
     }
 }

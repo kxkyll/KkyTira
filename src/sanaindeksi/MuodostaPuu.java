@@ -61,6 +61,7 @@ public class MuodostaPuu {
     }
 
     public boolean haeSana(String haettavaSana) {
+        System.out.println("Metodi haeSana");
         return trie.etsiSana(haettavaSana);
     }
 }

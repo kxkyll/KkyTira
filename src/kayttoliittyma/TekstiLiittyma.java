@@ -12,20 +12,21 @@ import tiedostonkasittely.TiedostonLuku;
 
 /**
  *
- * @author Kati
- * SanaHakuohjelman tekstipohjainen käyttöliittymä
+ * @author Kati SanaHakuohjelman tekstipohjainen käyttöliittymä
  */
 public class TekstiLiittyma {
 
     static Scanner lukija = new Scanner(System.in);
     TiedostonLuku tiedostonLuku = new TiedostonLuku();
-    
-/**
- *
- * Käyttäjältä kysytään ladattavia tiedostoja, kunnes annettu merkkijono on tyhjä
- * Käyttäjältä kysytään haettavia sanoja, kunnes annettu merkkijono on tyhjä.
- * @throws IOException 
- */
+
+    /**
+     *
+     * Käyttäjältä kysytään ladattavia tiedostoja, kunnes annettu merkkijono on
+     * tyhjä Käyttäjältä kysytään haettavia sanoja, kunnes annettu merkkijono on
+     * tyhjä.
+     *
+     * @throws IOException
+     */
     public void kaynnisty() throws IOException {
         MuodostaPuu muodostaPuu = new MuodostaPuu();
         boolean jatka = true;
@@ -36,41 +37,41 @@ public class TekstiLiittyma {
         while (jatka) {
             while (lisaaTiedostoja) {
                 String ladattavaTiedosto = kysyTiedosto();
-                if (ladattavaTiedosto.isEmpty() || ladattavaTiedosto.contentEquals(" ")){
+                if (ladattavaTiedosto.isEmpty() || ladattavaTiedosto.contentEquals(" ")) {
                     lisaaTiedostoja = false;
                 } else {
-                    System.out.println("Annoit tiedoston: " +ladattavaTiedosto);
-                    if (ladattavaTiedosto.endsWith("txt") ) {
-                        tiedostoLaskuri ++;
+                    System.out.println("Annoit tiedoston: " + ladattavaTiedosto);
+                    if (ladattavaTiedosto.endsWith("txt")) {
+                        tiedostoLaskuri++;
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
                         System.out.println("Tiedoston sisältö:");
-                        for (String rivi:luettuTiedosto) {
+                        for (String rivi : luettuTiedosto) {
                             System.out.println(rivi);
                         }
-                        System.out.println("tiedostoLaskuri: " +tiedostoLaskuri);
-                        muodostaPuu = new MuodostaPuu (luettuTiedosto, tiedostoLaskuri);
+                        System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
+                        muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
                     }
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
                     }
                 }
             }
-            
+
             String haettavaSana = kysySana();
             if (haettavaSana.isEmpty() || haettavaSana.contentEquals(" ")) {
                 jatka = false;
-            } 
-                Boolean sanaLoytyi =  muodostaPuu.haeSana(haettavaSana);
-                if (sanaLoytyi) {
-                    System.out.println("sana: " +haettavaSana +"löytyi" );
-                }
-            
+            }
+            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
+            if (sanaLoytyi) {
+                System.out.println("sana: " + haettavaSana + "löytyi");
+            }
+
         }
     }
 
     /**
      * Kysytään käyttäjältä haettavat sanat
-     * 
+     *
      * @return String Käyttäjän antama hakusana
      */
     public String kysySana() {
@@ -80,12 +81,12 @@ public class TekstiLiittyma {
 
     /**
      * Kysytään käyttäjältä ladattava tiedosto
-     * 
+     *
      * @return String Käyttäjän antama tiedostonnimi
      */
     public String kysyTiedosto() {
         System.out.print("Anna ladattavat tiedostot : ");
         return lukija.nextLine();
-        
+
     }
 }
