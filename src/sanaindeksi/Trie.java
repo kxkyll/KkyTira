@@ -54,7 +54,7 @@ public class Trie {
         return this;
     }
 
-    public boolean etsiSana(String sana) {
+    public int[][] etsiSana(String sana) {
         System.out.println("Metodi etsiSana");
         System.out.println("etsittävä sana: " + sana);
 
@@ -77,18 +77,19 @@ public class Trie {
                     System.out.println("lapsi ei ole null");
                 } else {
                     System.out.println("oikeaa ei löytynyt");
-                    return false; // kirjainta ei löytynyt  
+                    return null; // kirjainta ei löytynyt  
                 }
             }
 
             if (nykyinenSolmu.isSananVikaKirjain()) {
                 System.out.println("on vika kirjain");
-                //return nykyinenSolmu.getSijaintiTekstissa();
-                return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
+                //return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
+                return nykyinenSolmu.getSijaintiTekstissa();
+                
             }
         }
 
         System.out.println("ei löydy ei");
-        return false;
+        return null;
     }
 }

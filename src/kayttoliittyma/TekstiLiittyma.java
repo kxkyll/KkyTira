@@ -61,10 +61,10 @@ public class TekstiLiittyma {
             if (haettavaSana.isEmpty() || haettavaSana.contentEquals(" ")) {
                 jatka = false;
             }
-            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
-            if (sanaLoytyi) {
-                System.out.println("sana: " + haettavaSana + "löytyi");
-            }
+//            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
+//            if (sanaLoytyi) {
+//                System.out.println("sana: " + haettavaSana + "löytyi");
+//            }
 
         }
     }

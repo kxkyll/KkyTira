@@ -19,7 +19,8 @@ public class TrieSolmu {
 
     private char kirjain;
     private boolean sananVikaKirjain;
-    private ArrayList<Integer> sijaintiTekstissa;
+    private int [][] sijaintiTekstissa;
+    private int sarake;
     private LinkedList<TrieSolmu> lapsiLista;
 
     /**
@@ -32,7 +33,8 @@ public class TrieSolmu {
     public TrieSolmu(char kirjain) {
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
-        this.sijaintiTekstissa = new ArrayList<Integer>();
+        this.sijaintiTekstissa = new int [10][10];
+        this.sarake = 1;
         this.lapsiLista = new LinkedList<TrieSolmu>();
     }
 
@@ -47,10 +49,20 @@ public class TrieSolmu {
     /**
      *
      * @param tiedostoNumero ilmaisee missä tiedostossa sana esiintyy
-     * @param Rivinumero ilmaisee monennellako rivillä kyseisessä tiedostossa sana esiintyy
+     * @param riviNumero ilmaisee monennellako rivillä kyseisessä tiedostossa sana esiintyy
      */
-    public void setSijaintiTekstissa(int tiedostoNumero, int Rivinumero) {
-        this.sijaintiTekstissa.add(Rivinumero);
+    public void setSijaintiTekstissa(int tiedostoNumero, int riviNumero) {
+        int rivi = sijaintiTekstissa.length;
+        
+        
+        if (tiedostoNumero < rivi || sarake < sijaintiTekstissa[0].length) {
+            sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
+            sarake++;
+        } else {
+            //todo suurenna taulukkoa;
+        }
+        
+        
     }
 
     /**
@@ -81,7 +93,7 @@ public class TrieSolmu {
      *
      * @return palauttaa sanan sijaintitaulun
      */
-    public ArrayList<Integer> getSijaintiTekstissa() {
+    public int [][] getSijaintiTekstissa() {
         return sijaintiTekstissa;
     }
 

@@ -60,8 +60,22 @@ public class MuodostaPuu {
         return trie;
     }
 
-    public boolean haeSana(String haettavaSana) {
+    public void haeSana(String haettavaSana) {
         System.out.println("Metodi haeSana");
-        return trie.etsiSana(haettavaSana);
+        int [][] loydetytRivit = trie.etsiSana(haettavaSana);
+        if (loydetytRivit !=null ) {
+            tulostaRivit (loydetytRivit);
+        }
+    }
+
+    private void tulostaRivit(int[][] loydetytRivit) {
+       for (int i = 0; i< loydetytRivit.length; i++) {
+           for (int j = 0; j< loydetytRivit.length; j++) {
+               if (loydetytRivit[i][j] > 0) {
+                   System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
+               }
+               
+           }
+       }
     }
 }
