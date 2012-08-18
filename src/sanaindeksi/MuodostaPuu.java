@@ -78,7 +78,7 @@ public class MuodostaPuu {
         System.out.println("löydetyt:");
         for (int i = 0; i < loydetytRivit.length; i++) {
             for (int j = 0; j < loydetytRivit.length; j++) {
-                if (loydetytRivit[i][j] > 0) {
+                if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
                     System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
                 }
 

@@ -36,6 +36,7 @@ public class TrieSolmu {
         this.sijaintiTekstissa = new int [10][10];
         this.sarake = 1;
         this.lapsiLista = new LinkedList<TrieSolmu>();
+        alustaSijaintiTekstissa();
     }
 
     /**
@@ -46,6 +47,20 @@ public class TrieSolmu {
         this.sananVikaKirjain = sananVikaKirjain;
     }
 
+        /**
+     *
+     * @param  ilmaisee onko tämä kirjain jonkin sanan viimeinen kirjain
+     */
+    public void alustaSijaintiTekstissa () {
+        for (int i= 0 ; i<sijaintiTekstissa.length;i++) {
+            for (int j = 0; j< sijaintiTekstissa[0].length;j++){
+                sijaintiTekstissa[i][j] = Integer.MIN_VALUE;
+            }
+        }
+    }
+
+    
+    
     /**
      *
      * @param tiedostoNumero ilmaisee missä tiedostossa sana esiintyy
