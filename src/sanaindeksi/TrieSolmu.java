@@ -52,10 +52,16 @@ public class TrieSolmu {
      * @param riviNumero ilmaisee monennellako rivillä kyseisessä tiedostossa sana esiintyy
      */
     public void setSijaintiTekstissa(int tiedostoNumero, int riviNumero) {
+        System.out.println("tiedostoNumero: "+tiedostoNumero);
+        System.out.println("riviNumero: "+riviNumero);
         int rivi = sijaintiTekstissa.length;
+        System.out.println("rivi (taulukon pituus): "+rivi);
+        System.out.println("taulukon leveys: "+sijaintiTekstissa[0].length);
         
-        
-        if (tiedostoNumero < rivi || sarake < sijaintiTekstissa[0].length) {
+        if (tiedostoNumero < rivi && sarake < sijaintiTekstissa[0].length) {
+            System.out.println("laitetaan rivinumero taulukkoon");
+            System.out.println("sarake: "+sarake);
+            
             sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
             sarake++;
         } else {
@@ -94,6 +100,7 @@ public class TrieSolmu {
      * @return palauttaa sanan sijaintitaulun
      */
     public int [][] getSijaintiTekstissa() {
+        System.out.println("getSijaintiTekstissa");
         return sijaintiTekstissa;
     }
 

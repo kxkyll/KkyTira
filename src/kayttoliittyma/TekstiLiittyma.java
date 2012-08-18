@@ -61,6 +61,7 @@ public class TekstiLiittyma {
             if (haettavaSana.isEmpty() || haettavaSana.contentEquals(" ")) {
                 jatka = false;
             }
+            muodostaPuu.haeSana(haettavaSana);
 //            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
 //            if (sanaLoytyi) {
 //                System.out.println("sana: " + haettavaSana + "löytyi");

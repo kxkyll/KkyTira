@@ -30,7 +30,6 @@ public class MuodostaPuu {
     }
 
     public MuodostaPuu() {
-        
     }
 
     /**
@@ -41,17 +40,17 @@ public class MuodostaPuu {
      */
     public Trie perusTrie(int tiedostoNumero) {
 
-        int riviNumero = 1;
+        int riviNumero = 0;
         for (String rivi : tiedostonRivit) {
             String rivinSanat[] = rivi.split(" ");
             System.out.println("rivinSanat: ");
-            for (int i= 0; i< rivinSanat.length; i++) {
+            for (int i = 0; i < rivinSanat.length; i++) {
                 System.out.println(rivinSanat[i]);
             }
             for (int i = 0; i < rivinSanat.length; i++) {
-                System.out.println("rivinSanat: " +rivinSanat[i]);
-                System.out.println("tiedostoNumero: "+tiedostoNumero);
-                System.out.println("riviNumero: "+riviNumero);
+                System.out.println("rivinSanat: " + rivinSanat[i]);
+                System.out.println("tiedostoNumero: " + tiedostoNumero);
+                System.out.println("riviNumero: " + riviNumero);
                 trie = trie.lisaaSana(rivinSanat[i], tiedostoNumero, riviNumero);
             }
             riviNumero++;
@@ -62,20 +61,28 @@ public class MuodostaPuu {
 
     public void haeSana(String haettavaSana) {
         System.out.println("Metodi haeSana");
-        int [][] loydetytRivit = trie.etsiSana(haettavaSana);
-        if (loydetytRivit !=null ) {
-            tulostaRivit (loydetytRivit);
+        int[][] loydetytRivit = trie.etsiSana(haettavaSana);
+        if (loydetytRivit != null) {
+            tulostaRivit(loydetytRivit);
         }
     }
 
     private void tulostaRivit(int[][] loydetytRivit) {
-       for (int i = 0; i< loydetytRivit.length; i++) {
-           for (int j = 0; j< loydetytRivit.length; j++) {
-               if (loydetytRivit[i][j] > 0) {
-                   System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
-               }
-               
-           }
-       }
+        System.out.println("tulostaRivit");
+        for (int i = 0; i < loydetytRivit.length; i++) {
+            for (int j = 0; j < loydetytRivit.length; j++) {
+                System.out.print(loydetytRivit[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("löydetyt:");
+        for (int i = 0; i < loydetytRivit.length; i++) {
+            for (int j = 0; j < loydetytRivit.length; j++) {
+                if (loydetytRivit[i][j] > 0) {
+                    System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
+                }
+
+            }
+        }
     }
 }
