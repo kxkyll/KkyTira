@@ -47,10 +47,7 @@ public class MuodostaPuu {
         int riviNumero = 0;
         for (String rivi : tiedostonRivit) {
             System.out.println("rivi ennen korvausta: " + rivi);
-            rivi = rivi.replaceAll("[,.:!;\"]", "");
-            //rivi = rivi.replaceAll("!", "");
-            //rivi = rivi.replaceAll(">?<", "");
-            //rivi = rivi.replace(",.!?", ""); //todo: voiko välimerkit vain poistaa, 
+            rivi = rivi.replaceAll("[,.:!;\"?]", "");
             System.out.println("rivi korvauksen jälkeen: " + rivi);
             String rivinSanat[] = rivi.split(" ");
             System.out.println("rivinSanat: ");
