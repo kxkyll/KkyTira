@@ -12,7 +12,11 @@ import java.util.ArrayList;
  *
  * Tutkitaan käyttäjän antamien parametrien perusteella minkälainen puurakenne
  * tiedostosta muodostetaan Oletusarvoisesti muodostetaan perusTrie
+  
+ * 
  */
+
+
 public class MuodostaPuu {
 
     private ArrayList<String> tiedostonRivit;
@@ -42,6 +46,12 @@ public class MuodostaPuu {
 
         int riviNumero = 0;
         for (String rivi : tiedostonRivit) {
+            System.out.println("rivi ennen korvausta: " + rivi);
+            rivi = rivi.replaceAll("[,.:!;\"]", "");
+            //rivi = rivi.replaceAll("!", "");
+            //rivi = rivi.replaceAll(">?<", "");
+            //rivi = rivi.replace(",.!?", ""); //todo: voiko välimerkit vain poistaa, 
+            System.out.println("rivi korvauksen jälkeen: " + rivi);
             String rivinSanat[] = rivi.split(" ");
             System.out.println("rivinSanat: ");
             for (int i = 0; i < rivinSanat.length; i++) {
