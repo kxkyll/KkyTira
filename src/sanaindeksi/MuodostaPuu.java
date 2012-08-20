@@ -66,12 +66,18 @@ public class MuodostaPuu {
         return trie;
     }
 
-    public void haeSana(String haettavaSana) {
+    /**
+     *
+     * @param haettavaSana minkä sanan esiintymistä ladatuista tiedostoista etsitään
+     * @return loydetytRivit kertoo millä riveillä kussakin ladatussa tiedostossa haettava sana esiintyy
+     */
+    public int [][] haeSana(String haettavaSana) {
         System.out.println("Metodi haeSana");
         int[][] loydetytRivit = trie.etsiSana(haettavaSana);
         if (loydetytRivit != null) {
             tulostaRivit(loydetytRivit);
         }
+        return loydetytRivit;
     }
 
     private void tulostaRivit(int[][] loydetytRivit) {
@@ -82,14 +88,21 @@ public class MuodostaPuu {
             }
             System.out.println("");
         }
-        System.out.println("löydetyt:");
-        for (int i = 0; i < loydetytRivit.length; i++) {
-            for (int j = 0; j < loydetytRivit.length; j++) {
-                if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
-                    System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
-                }
+//        System.out.println("löydetyt:");
+//        for (int i = 0; i < loydetytRivit.length; i++) {
+//            for (int j = 0; j < loydetytRivit.length; j++) {
+//                if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
+//                    System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
+//                }
+//
+//            }
+//        }
+    }
 
-            }
-        }
+    public Trie lisaaTiedosto(ArrayList<String> luettuTiedosto, int tiedostoLaskuri) {
+        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
+        this.tiedostonRivit = luettuTiedosto;;
+        trie = perusTrie(tiedostoLaskuri);
+        return trie;
     }
 }

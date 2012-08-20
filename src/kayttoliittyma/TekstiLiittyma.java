@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import sanaindeksi.MuodostaPuu;
+import sanaindeksi.Tiedostot;
 import tiedostonkasittely.TiedostonLuku;
 
 /**
@@ -18,6 +19,7 @@ public class TekstiLiittyma {
 
     static Scanner lukija = new Scanner(System.in);
     TiedostonLuku tiedostonLuku = new TiedostonLuku();
+    ArrayList<Tiedostot> luetutTiedostot;
 
     /**
      *
@@ -28,11 +30,12 @@ public class TekstiLiittyma {
      * @throws IOException
      */
     public void kaynnisty() throws IOException {
-        MuodostaPuu muodostaPuu = new MuodostaPuu();
+        MuodostaPuu muodostaPuu = null;// = new MuodostaPuu();
         boolean jatka = true;
         boolean lisaaTiedostoja = true;
         int tiedostoLaskuri = 0;
         ArrayList<String> luettuTiedosto = new ArrayList<String>();
+        luetutTiedostot = new ArrayList<Tiedostot>();
         System.out.println("Anna ladattavan tiedoston hakupolku ja nimi (tyhjä merkkijono lopettaa)");
         while (jatka) {
             while (lisaaTiedostoja) {
@@ -44,12 +47,22 @@ public class TekstiLiittyma {
                     if (ladattavaTiedosto.endsWith("txt")) {
                         tiedostoLaskuri++;
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
+                        System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
+                        luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
+
                         System.out.println("Tiedoston sisältö:");
                         for (String rivi : luettuTiedosto) {
                             System.out.println(rivi);
                         }
                         System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
-                        muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
+                        if (muodostaPuu != null) {
+                            System.out.println("Muodostapuu ei ole null, lisätään tiedosto");
+                            muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
+                        } else {
+                            System.out.println("MuodostaPuu on null, luodaan uusi puu");
+                            muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
+                        }
+
                     }
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
@@ -60,13 +73,35 @@ public class TekstiLiittyma {
             String haettavaSana = kysySana();
             if (haettavaSana.isEmpty() || haettavaSana.contentEquals(" ")) {
                 jatka = false;
+            } else {
+                int[][] loydetytRivit = muodostaPuu.haeSana(haettavaSana);
+                if (loydetytRivit != null) {
+                    tulostaLoydetytRivit(loydetytRivit);
+                }
             }
-            muodostaPuu.haeSana(haettavaSana);
 //            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
 //            if (sanaLoytyi) {
 //                System.out.println("sana: " + haettavaSana + "löytyi");
 //            }
 
+        }
+    }
+
+    public void tulostaLoydetytRivit(int[][] loydetytRivit) {
+        System.out.println("löydetyt:");
+        for (int i = 1; i < loydetytRivit.length; i++) {
+            
+            for (int j = 1; j < loydetytRivit.length; j++) {
+                if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
+                    Tiedostot loydetty = luetutTiedostot.get(i-1);
+                    System.out.println("Tiedostosta: "+loydetty.getTiedostonNimi() +"löytyivät rivit: ");
+                    ArrayList<String> loydettyRivit = loydetty.getTiedosto();
+                    System.out.println(loydettyRivit.get(loydetytRivit[i][j]));
+                   //         System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
+                }
+
+            }
+            //System.out.println("");
         }
     }
 
