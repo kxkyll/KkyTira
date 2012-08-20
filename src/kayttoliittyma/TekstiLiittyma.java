@@ -77,6 +77,8 @@ public class TekstiLiittyma {
                 int[][] loydetytRivit = muodostaPuu.haeSana(haettavaSana);
                 if (loydetytRivit != null) {
                     tulostaLoydetytRivit(loydetytRivit);
+                }else {
+                    System.out.println("Haettavaa sanaa "+haettavaSana +" ei löytynyt");
                 }
             }
 //            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);

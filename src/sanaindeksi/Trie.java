@@ -12,10 +12,20 @@ public class Trie {
 
     private TrieSolmu juuriSolmu;
 
+    /**
+     *
+     */
     public Trie() {
         this.juuriSolmu = new TrieSolmu(' ');
     }
 
+    /**
+     *
+     * @param sana
+     * @param tiedostoNumero
+     * @param riviNumero
+     * @return
+     */
     public Trie lisaaSana(String sana, int tiedostoNumero, int riviNumero) {
         System.out.println("lisaaSana");
         TrieSolmu nykyinenSolmu;
@@ -52,6 +62,11 @@ public class Trie {
         return this;
     }
 
+    /**
+     *
+     * @param sana
+     * @return
+     */
     public int[][] etsiSana(String sana) {
         System.out.println("Metodi etsiSana");
         System.out.println("etsittävä sana: " + sana);
@@ -74,20 +89,20 @@ public class Trie {
                     nykyinenSolmu = lapsiSolmu;
                     System.out.println("lapsi ei ole null");
                 } else {
-                    System.out.println("oikeaa ei löytynyt");
+                   // System.out.println("oikeaa ei löytynyt");
                     return null; // kirjainta ei löytynyt  
                 }
             }
 
             if (nykyinenSolmu.isSananVikaKirjain()) {
-                System.out.println("on vika kirjain");
+                //System.out.println("on vika kirjain");
                 //return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
                 return nykyinenSolmu.getSijaintiTekstissa();
                 
             }
         }
 
-        System.out.println("ei löydy ei");
+        //System.out.println("ei löydy ei");
         return null;
     }
 }

@@ -4,8 +4,6 @@
  */
 package sanaindeksi;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -49,8 +47,8 @@ public class TrieSolmu {
     }
 
     /**
-     *
-     * @param ilmaisee onko tämä kirjain jonkin sanan viimeinen kirjain
+     * alustaa sijaintiTekstissa taulukon sisällön asettamalla jokaiseen
+     * taulukon alkioon pienimmän mahdollisen kokonaisluvun Integer.MIN_VALUE
      */
     public void alustaSijaintiTekstissa() {
         for (int i = 0; i < sijaintiTekstissa.length; i++) {
@@ -61,54 +59,42 @@ public class TrieSolmu {
     }
 
     /**
-     *
+     * Metodi setSijaintiTekstissa tallentaa sijaintiTekstissa-taulukkoon
+     * sanan esiintymisrivin numeron. Jos sana esiintyy useasti, taulukko täyttyy
+     * jolloin sen kokoa kasvatetaan.
      * @param tiedostoNumero ilmaisee missä tiedostossa sana esiintyy
      * @param riviNumero ilmaisee monennellako rivillä kyseisessä tiedostossa
      * sana esiintyy
+     * 
      */
     public void setSijaintiTekstissa(int tiedostoNumero, int riviNumero) {
-        System.out.println("tiedostoNumero: " + tiedostoNumero);
-        System.out.println("riviNumero: " + riviNumero);
+//        System.out.println("tiedostoNumero: " + tiedostoNumero);
+//        System.out.println("riviNumero: " + riviNumero);
         int rivi = sijaintiTekstissa.length;
-        System.out.println("rivi (taulukon pituus): " + rivi);
-        System.out.println("taulukon leveys: " + sijaintiTekstissa[0].length);
+//        System.out.println("rivi (taulukon pituus): " + rivi);
+//        System.out.println("taulukon leveys: " + sijaintiTekstissa[0].length);
 
         if (tiedostoNumero < rivi && sarake < sijaintiTekstissa[0].length) {
-            System.out.println("laitetaan rivinumero taulukkoon");
-            System.out.println("sarake: " + sarake);
+            //           System.out.println("laitetaan rivinumero taulukkoon");
+            //           System.out.println("sarake: " + sarake);
 
             sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
             sarake++;
         } else {
-            //todo suurenna taulukkoa;
             System.out.println("SijaintiTekstissa taulukko täynnä: ");
-//            tulostaTaulukko(sijaintiTekstissa);
-
             int[][] uusiTaulu = new int[sijaintiTekstissa[0].length * 2][sijaintiTekstissa.length * 2];
-
-  //          System.out.println("uusiTaulu luotu");
-  //          tulostaTaulukko(uusiTaulu);
             uusiTaulu = siirraTaulukonTiedot(uusiTaulu, sijaintiTekstissa);
-            //uusiTaulu = sijaintiTekstissa;
-//            System.out.println("sijaintiTekstissa sijoitettu uusiTauluun ");
-//            tulostaTaulukko(uusiTaulu);
-//            sijaintiTekstissa = new int[uusiTaulu[0].length][uusiTaulu.length];
-//            System.out.println("SijaintiTekstissa taulukko suurennettu: ");
-//            tulostaTaulukko(sijaintiTekstissa);
-//            sijaintiTekstissa = siirraTaulukonTiedot(sijaintiTekstissa, uusiTaulu);
             sijaintiTekstissa = uusiTaulu;
-//            System.out.println("uusiTaulu sijoitettu sijaintiTekstissa-tauluun ");
-//            tulostaTaulukko(sijaintiTekstissa);
             sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
-//            System.out.println("uusi sijainti lisätty sijaintiTekstissa-tauluun ");
-//            tulostaTaulukko(sijaintiTekstissa);
             sarake++;
-
         }
-
-
     }
 
+    /**
+     *
+     * @param taulukko tulostaa kaksiulotteisen int taulukon sisällön.
+     * Käytetty testauksen apuna
+     */
     public void tulostaTaulukko(int[][] taulukko) {
         for (int i = 0; i < taulukko.length; i++) {
             for (int j = 0; j < taulukko[0].length; j++) {
@@ -153,11 +139,11 @@ public class TrieSolmu {
 
     /**
      *
-     * @param kirjain, metodi etsii onko solmun jonkin lapsisolmun arvona tämä
-     * kirjain
      * @return, metodi palauttaa sen lapsisolmun viitteen jonka arvona
      * parametrina saatu kirjain on, jos kyseistä kirjainta ei ole minkään
      * lapsisolmun arvona, metodi palauttaa arvon null
+     * @param kirjain etsittävä kirjain
+     *
      */
     public TrieSolmu etsiKirjain(char kirjain) {
 
@@ -174,9 +160,10 @@ public class TrieSolmu {
 
     /**
      *
-     * @param uusiLapsi, lisättävä lapsiSolmu
      * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen
      * lapsiSolmuun, muutoin metodi palauttaa arvon null
+     * @param uusiLapsi
+     *
      */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
         boolean onnistui = this.lapsiLista.add(uusiLapsi);
@@ -186,6 +173,19 @@ public class TrieSolmu {
         return null;
     }
 
+    /**
+     * Metodi siirtää taulukossa olevat sijaintitiedot lähdetaulusta
+     * kohdetauluun ja alustaa kohdetaulun tyhjäksijäävät alkiot arvolla
+     * Integer.MIN_VALUE Metodia kutsutaan kun sijaintiTekstissa taulukko on
+     * täyttynyt ja sen kokoa kasvatetaan
+     *
+     * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen
+     * lapsiSolmuun, muutoin metodi palauttaa arvon null
+     * 
+     * @param int [][] kohdeTaulu taulukko, johon kopioidaan tietoa
+     * @param int [][] lahdeTaulu taulukko, josta kopioidaan tietoa
+     *
+     */
     private int[][] siirraTaulukonTiedot(int[][] kohdeTaulu, int[][] lahdeTaulu) {
         for (int i = 0; i < kohdeTaulu.length; i++) {
             for (int j = 0; j < kohdeTaulu[0].length; j++) {
