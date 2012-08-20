@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Kati
  *
  * Tutkitaan käyttäjän antamien parametrien perusteella minkälainen puurakenne
- * tiedostosta muodostetaan Oletusarvoisesti muodostetaan perusTrie
+ * tiedostosta muodostetaan. Oletusarvoisesti muodostetaan perusTrie
   
  * 
  */

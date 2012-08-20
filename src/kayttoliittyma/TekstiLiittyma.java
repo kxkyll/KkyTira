@@ -89,18 +89,23 @@ public class TekstiLiittyma {
 
     public void tulostaLoydetytRivit(int[][] loydetytRivit) {
         System.out.println("löydetyt:");
+        Boolean tiedostonNimiTulostettu = false;
         for (int i = 1; i < loydetytRivit.length; i++) {
-            
+
             for (int j = 1; j < loydetytRivit.length; j++) {
                 if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
-                    Tiedostot loydetty = luetutTiedostot.get(i-1);
-                    System.out.println("Tiedostosta: "+loydetty.getTiedostonNimi() +"löytyivät rivit: ");
+                    Tiedostot loydetty = luetutTiedostot.get(i - 1);
+                    if (!tiedostonNimiTulostettu) {
+                        System.out.println("Tiedostosta: " + loydetty.getTiedostonNimi() + " löytyivät rivit: ");
+                        tiedostonNimiTulostettu = true;
+                    }
                     ArrayList<String> loydettyRivit = loydetty.getTiedosto();
-                    System.out.println(loydettyRivit.get(loydetytRivit[i][j]));
-                   //         System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
+                    System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.get(loydetytRivit[i][j]));
+                    //         System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
                 }
 
             }
+            tiedostonNimiTulostettu = false;
             //System.out.println("");
         }
     }
