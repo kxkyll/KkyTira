@@ -26,7 +26,14 @@ public class JoustavaTaulukko {
         return i;
     }
 
-    public int getJoustavaListaSize() {
+    public String getJoustavaListaItem(int ind) {
+        if (ind >= 0 && ind <= i) {
+            return joustavaTaulukko[ind];
+        }
+        return null;
+    }
+
+    public int getJoustavaListaLength() {
         return joustavaTaulukko.length;
     }
 

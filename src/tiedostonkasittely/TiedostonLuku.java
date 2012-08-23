@@ -4,6 +4,7 @@
  */
 package tiedostonkasittely;
 
+import apurakenteet.JoustavaTaulukko;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,8 +22,8 @@ import java.util.logging.Logger;
  */
 public class TiedostonLuku {
 
-    private ArrayList<String> tiedostonRiviLista = null;
-
+    //private ArrayList<String> tiedostonRiviLista = null;
+    private JoustavaTaulukko tiedostonRiviLista = null;
     /**
      * Metodi lueTiedostoLevylta lukee käyttäjän antaman tiedoston levyltä
      *
@@ -32,17 +33,20 @@ public class TiedostonLuku {
      * @throws IOException
      */
     // Testitiedosto C:\Users\Kati\Documents\Opiskelu\Tekstit\testirivit.txt
-    public ArrayList<String> lueTiedostoLevylta(String tiedostonnimi) {
+    //public ArrayList<String> lueTiedostoLevylta(String tiedostonnimi) {
+        public JoustavaTaulukko lueTiedostoLevylta(String tiedostonnimi) {
         BufferedReader tiedostonLukija = null;
         String tiedostonRivi = null;
-        tiedostonRiviLista = new ArrayList<String>();
+        //tiedostonRiviLista = new ArrayList<String>();
+          tiedostonRiviLista = new JoustavaTaulukko();
         try {
 
             tiedostonLukija = new BufferedReader(new FileReader(tiedostonnimi));
             try {
                 //            System.out.println("tiedosto avattu lukemista varten");
                 while ((tiedostonRivi = tiedostonLukija.readLine()) != null) {
-                    tiedostonRiviLista.add(tiedostonRivi);
+//                    tiedostonRiviLista.add(tiedostonRivi);
+                              tiedostonRiviLista.lisaaJoustavaanTaulukkoon(tiedostonRivi);
                 }
             } catch (IOException ex) {
                 System.out.println("Tiedoston nimi tai polku virheellinen");
@@ -103,7 +107,8 @@ public class TiedostonLuku {
     public void lueTiedostoNetista(String ladattavaTiedosto) {
         BufferedReader tiedostonLukija = null;
         String tiedostonRivi = null;
-        tiedostonRiviLista = new ArrayList<String>();
+      //  tiedostonRiviLista = new ArrayList<String>();
+          tiedostonRiviLista = new JoustavaTaulukko();
 
         HttpURLConnection yhteys;
     }

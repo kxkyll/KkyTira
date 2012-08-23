@@ -4,6 +4,7 @@
  */
 package kayttoliittyma;
 
+import apurakenteet.JoustavaTaulukko;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,7 +35,8 @@ public class TekstiLiittyma {
         boolean jatka = true;
         boolean lisaaTiedostoja = true;
         int tiedostoLaskuri = 0;
-        ArrayList<String> luettuTiedosto = new ArrayList<String>();
+        JoustavaTaulukko luettuTiedosto = new JoustavaTaulukko();
+        //ArrayList<String> luettuTiedosto = new ArrayList<String>();
         luetutTiedostot = new ArrayList<Tiedostot>();
         System.out.println("Anna ladattavan tiedoston hakupolku ja nimi (tyhjä merkkijono lopettaa)");
         while (jatka) {
@@ -52,8 +54,12 @@ public class TekstiLiittyma {
                             luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
 
                             System.out.println("Tiedoston sisältö:");
-                            for (String rivi : luettuTiedosto) {
-                                System.out.println(rivi);
+//                            String [] apuTaulukko = luettuTiedosto.getJoustavaLista();
+//                            for (String rivi : apuTaulukko) {
+//                                System.out.println(rivi);
+//                            }
+                            for (int i = 0; i< luettuTiedosto.getI();i++) {
+                                System.out.println(luettuTiedosto.getJoustavaListaItem(i));
                             }
                             tiedostoLaskuri++;
                             System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
@@ -101,8 +107,10 @@ public class TekstiLiittyma {
                         System.out.println("Tiedostosta: " + loydetty.getTiedostonNimi() + " löytyivät rivit: ");
                         tiedostonNimiTulostettu = true;
                     }
-                    ArrayList<String> loydettyRivit = loydetty.getTiedosto();
-                    System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.get(loydetytRivit[i][j]));
+                    //ArrayList<String> loydettyRivit = loydetty.getTiedosto();
+                    JoustavaTaulukko loydettyRivit = loydetty.getTiedosto();
+                    //System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.get(loydetytRivit[i][j]));
+                    System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.getJoustavaListaItem(loydetytRivit[i][j]));
 
                 }
 

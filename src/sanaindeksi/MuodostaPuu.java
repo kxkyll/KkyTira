@@ -4,7 +4,7 @@
  */
 package sanaindeksi;
 
-import java.util.ArrayList;
+import apurakenteet.JoustavaTaulukko;
 
 /**
  *
@@ -12,14 +12,14 @@ import java.util.ArrayList;
  *
  * Tutkitaan käyttäjän antamien parametrien perusteella minkälainen puurakenne
  * tiedostosta muodostetaan. Oletusarvoisesti muodostetaan perusTrie
-  
- * 
+ *
+ *
  */
-
-
 public class MuodostaPuu {
     //private String [] tiedostonRivit;
-    private ArrayList<String> tiedostonRivit;
+
+    //private ArrayList<String> tiedostonRivit;
+    private JoustavaTaulukko tiedostonRivit;
     Trie trie = new Trie();
 
     /**
@@ -28,7 +28,8 @@ public class MuodostaPuu {
      * kukin tiedoston rivi on omalla rivillään
      * @param tiedostoNumero Viite siihen monesko tiedosto on käsittelyssä
      */
-    public MuodostaPuu(ArrayList<String> tiedostonRivit, int tiedostoNumero) {
+    //public MuodostaPuu(ArrayList<String> tiedostonRivit, int tiedostoNumero) {
+    public MuodostaPuu(JoustavaTaulukko tiedostonRivit, int tiedostoNumero) {
         this.tiedostonRivit = tiedostonRivit;
         trie = perusTrie(tiedostoNumero);
     }
@@ -45,8 +46,11 @@ public class MuodostaPuu {
     public Trie perusTrie(int tiedostoNumero) {
 
         int riviNumero = 0;
-        for (String rivi : tiedostonRivit) {
-//            System.out.println("rivi ennen korvausta: " + rivi);
+        //for (String rivi : tiedostonRivit) {
+            for (int i = 0; i < tiedostonRivit.getI() ; i++) {
+            String rivi = tiedostonRivit.getJoustavaListaItem(i);
+            //System.out.println("rivi ennen korvausta: " + rivi);
+           
             rivi = rivi.replaceAll("[,.:!;\"?]", "");
 //            System.out.println("rivi korvauksen jälkeen: " + rivi);
             String rivinSanat[] = rivi.split(" ");
@@ -54,11 +58,12 @@ public class MuodostaPuu {
 //            for (int i = 0; i < rivinSanat.length; i++) {
 //                System.out.println(rivinSanat[i]);
 //            }
-            for (int i = 0; i < rivinSanat.length; i++) {
-//                System.out.println("rivinSanat: " + rivinSanat[i]);
+            
+            for (int j = 0; j < rivinSanat.length; j++) {
+//                System.out.println("rivinSanat: " + rivinSanat[j]);
 //                System.out.println("tiedostoNumero: " + tiedostoNumero);
 //                System.out.println("riviNumero: " + riviNumero);
-                trie = trie.lisaaSana(rivinSanat[i], tiedostoNumero, riviNumero);
+                trie = trie.lisaaSana(rivinSanat[j], tiedostoNumero, riviNumero);
             }
             riviNumero++;
         }
@@ -68,10 +73,12 @@ public class MuodostaPuu {
 
     /**
      *
-     * @param haettavaSana minkä sanan esiintymistä ladatuista tiedostoista etsitään
-     * @return loydetytRivit kertoo millä riveillä kussakin ladatussa tiedostossa haettava sana esiintyy
+     * @param haettavaSana minkä sanan esiintymistä ladatuista tiedostoista
+     * etsitään
+     * @return loydetytRivit kertoo millä riveillä kussakin ladatussa
+     * tiedostossa haettava sana esiintyy
      */
-    public int [][] haeSana(String haettavaSana) {
+    public int[][] haeSana(String haettavaSana) {
         System.out.println("Metodi haeSana");
         int[][] loydetytRivit = trie.etsiSana(haettavaSana);
         if (loydetytRivit != null) {
@@ -99,9 +106,11 @@ public class MuodostaPuu {
 //        }
     }
 
-    public Trie lisaaTiedosto(ArrayList<String> luettuTiedosto, int tiedostoLaskuri) {
+    //public Trie lisaaTiedosto(ArrayList<String> luettuTiedosto, int tiedostoLaskuri) {
+    public Trie lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
         System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
-        this.tiedostonRivit = luettuTiedosto;;
+        //this.tiedostonRivit = luettuTiedosto;
+        this.tiedostonRivit = luettuTiedosto;
         trie = perusTrie(tiedostoLaskuri);
         return trie;
     }
