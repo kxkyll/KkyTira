@@ -186,7 +186,6 @@ public class TrieSolmu {
      * lapsiSolmuun, muutoin metodi palauttaa arvon null
      * 
      * @param int [][] kohdeTaulu taulukko, johon kopioidaan tietoa
-     * @param int [][] lahdeTaulu taulukko, josta kopioidaan tietoa
      *
      */
     private int[][] siirraTaulukonTiedot(int[][] kohdeTaulu, int[][] lahdeTaulu) {

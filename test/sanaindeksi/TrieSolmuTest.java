@@ -59,11 +59,10 @@ public class TrieSolmuTest {
     @Test
     public void testSetSananVikaKirjain() {
         System.out.println("setSananVikaKirjain");
-        boolean sananVikaKirjain = false;
-        TrieSolmu instance = null;
-        instance.setSananVikaKirjain(sananVikaKirjain);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        boolean sananVikaKirjain = true;
+        TrieSolmu solmu = new TrieSolmu('u');
+        solmu.setSananVikaKirjain(sananVikaKirjain);
+        assertTrue(solmu.isSananVikaKirjain());
     }
 
 // Ei vielä toteutettu    
@@ -87,12 +86,11 @@ public class TrieSolmuTest {
     @Test
     public void testGetKirjain() {
         System.out.println("getKirjain");
-        TrieSolmu instance = null;
-        char expResult = ' ';
-        char result = instance.getKirjain();
+        TrieSolmu solmu = new TrieSolmu('u');
+        char expResult = 'u';
+        char result = solmu.getKirjain();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -101,12 +99,10 @@ public class TrieSolmuTest {
     @Test
     public void testIsSananVikaKirjain() {
         System.out.println("isSananVikaKirjain");
-        TrieSolmu instance = null;
+        TrieSolmu solmu = new TrieSolmu('u');
         boolean expResult = false;
-        boolean result = instance.isSananVikaKirjain();
+        boolean result = solmu.isSananVikaKirjain();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -119,8 +115,7 @@ public class TrieSolmuTest {
         LinkedList expResult = new LinkedList ();
         LinkedList result = trieSolmu.getLapsiLista();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        
     }
 
 //    /**
@@ -144,16 +139,12 @@ public class TrieSolmuTest {
     @Test
     public void testEtsiKirjain() {
         System.out.println("etsiKirjain");
+        TrieSolmu solmu = new TrieSolmu ('k');
+        solmu.lisaaLapsi(new TrieSolmu('a'));
+        
+        solmu = solmu.etsiKirjain('a');
 
-        String sana = "k";
-        Trie testiTrie = new Trie();
-        testiTrie = testiTrie.lisaaSana(sana, 1, 1);
-
-        char kirjain = 'k';
-        TrieSolmu lapsi = null;
-        lapsi = lapsi.etsiKirjain(kirjain);
-
-        assertNotNull(lapsi);
+        assertNotNull(solmu);
 
     }
 
@@ -170,7 +161,6 @@ public class TrieSolmuTest {
         
         TrieSolmu result = trieSolmu.lisaaLapsi(null);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        
     }
 }
