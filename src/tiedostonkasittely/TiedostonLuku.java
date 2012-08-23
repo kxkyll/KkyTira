@@ -28,6 +28,10 @@ public class TiedostonLuku {
      * @param tiedostonnimi Käyttäjän antama tiedostonnimi hakemistopolkuineen
      * @return ArrayList<String> Käyttäjän antaman tiedostonnimen mukaan luettu
      * tiedoston sisältö riveittäin
+     * 
+     * Mikäli annettun tiedostonnimen mukaista tiedostoa ei löydy, tai sitä 
+     * ei pystytä lukemaan, jätetään tämä huomiotta ja pyydetään käyttäjältä 
+     * seuraava tiedosto
      */
     // Testitiedosto C:\Users\Kati\Documents\Opiskelu\Tekstit\testirivit.txt
     //public ArrayList<String> lueTiedostoLevylta(String tiedostonnimi) {

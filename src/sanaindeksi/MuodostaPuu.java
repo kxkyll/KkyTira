@@ -50,10 +50,10 @@ public class MuodostaPuu {
 
         int riviNumero = 0;
         //for (String rivi : tiedostonRivit) {
-            for (int i = 0; i < tiedostonRivit.getI() ; i++) {
+        for (int i = 0; i < tiedostonRivit.getI(); i++) {
             String rivi = (String) tiedostonRivit.getJoustavaListaItem(i);
             //System.out.println("rivi ennen korvausta: " + rivi);
-           
+
             rivi = rivi.replaceAll("[,.:!;\"?]", "");
 //            System.out.println("rivi korvauksen jälkeen: " + rivi);
             String rivinSanat[] = rivi.split(" ");
@@ -61,7 +61,7 @@ public class MuodostaPuu {
 //            for (int i = 0; i < rivinSanat.length; i++) {
 //                System.out.println(rivinSanat[i]);
 //            }
-            
+
             for (int j = 0; j < rivinSanat.length; j++) {
 //                System.out.println("rivinSanat: " + rivinSanat[j]);
 //                System.out.println("tiedostoNumero: " + tiedostoNumero);
@@ -76,10 +76,9 @@ public class MuodostaPuu {
 
     /**
      *
-     * @param haettavaSana minkä sanan esiintymistä ladatuista tiedostoista
-     * etsitään
-     * @return loydetytRivit kertoo millä riveillä kussakin ladatussa
-     * tiedostossa haettava sana esiintyy
+     * @param haettavaSana sana, jota etsitään luetuista tiedostoista
+     * @return loydetytRivit kertoo millä riveillä kussakin tiedostossa haettava
+     * sana esiintyy
      */
     public int[][] haeSana(String haettavaSana) {
 //        System.out.println("Metodi haeSana");
@@ -90,6 +89,13 @@ public class MuodostaPuu {
         return loydetytRivit;
     }
 
+    /**
+     * Metodi tulostaRivit tulostaa niiden tiedostojen ne rivit ja rivinumerot,
+     * joilta haettava sana löytyi
+     * @param loydetytRivit taulukko, missä on rivit esittävät luettuja
+     * tiedostoja ja sarakkeet ilmaisevat millä rivillä kyseisessä tiedostossa
+     * haettava sana esiintyy
+     */
     private void tulostaRivit(int[][] loydetytRivit) {
         System.out.println("tulostaRivit");
         for (int i = 0; i < loydetytRivit.length; i++) {
@@ -111,10 +117,10 @@ public class MuodostaPuu {
 
     //public Trie lisaaTiedosto(ArrayList<String> luettuTiedosto, int tiedostoLaskuri) {
     /**
-     *
-     * @param luettuTiedosto
-     * @param tiedostoLaskuri
-     * @return
+     * Metodi lisaaTiedosto lisää trie hakupuuhun uuden tiedoston
+     * @param luettuTiedosto käyttäjän antaman tiedoston rivit
+     * @param tiedostoLaskuri tiedoston numero
+     * @return trie, palauttaa viitteen päivitettyyn trie hakupuuhun
      */
     public Trie lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
 //        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");

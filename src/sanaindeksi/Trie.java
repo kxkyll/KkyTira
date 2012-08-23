@@ -7,24 +7,29 @@ package sanaindeksi;
 /**
  *
  * @author Kati
+ * Trie luokka sisältää Trie hakupuun ja sen metodit
  */
 public class Trie {
 
     private TrieSolmu juuriSolmu;
 
     /**
-     *
+     * Konstruktori luo tyhjän Trie hakupuun
      */
     public Trie() {
         this.juuriSolmu = new TrieSolmu(' ');
     }
 
     /**
-     *
-     * @param sana
-     * @param tiedostoNumero
-     * @param riviNumero
-     * @return
+     * Metodi lisaaSana lisää parametrina saamiaan sanoja Trie hakupuuhun,
+     * sanan viimeisen kirjaimen TrieSolmuun talletetaan lisäksi tieto siitä,
+     * että kyseinen sana on viimeinen sekä taulukoidaan misää tiedostossa ja rivillä
+     * sana esiintyy
+     * 
+     * @param sana hakupuuhun lisättävä sana
+     * @param tiedostoNumero viite tiedostoon, jossa sana esiintyy
+     * @param riviNumero viite riville, jossa sana esiintyy
+     * @return viite päivitettyyn Trie hakupuuhun
      */
     public Trie lisaaSana(String sana, int tiedostoNumero, int riviNumero) {
    //     System.out.println("lisaaSana");
@@ -63,9 +68,16 @@ public class Trie {
     }
 
     /**
-     *
-     * @param sana
-     * @return
+     * Metodi etsiSana etsii esiinty parametrina saatu merkkijono
+     * kokonaisuudessaan, jossakin Trie-hakupuuhun ladatussa tiedostossa
+     * Mikäli sana esiintyy, palautetaan taulukko, josta ilmenee missä tiedostoissa 
+     * sekä millä riveillä sana esiintyy
+     * 
+     * @param sana etsittävä sana
+     * @return kaksiulotteinen kokonaislukutaulukko, jossa rivi kertoo missä tiedostossa
+     * sana esiintyy ja sarake kertoo rivin, jossa sana esiintyy 
+     * 
+     * Mikäli sanaa ei löydy, metodi palauttaa arvon null
      */
     public int[][] etsiSana(String sana) {
       //  System.out.println("Metodi etsiSana");

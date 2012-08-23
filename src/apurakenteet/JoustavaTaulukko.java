@@ -1,6 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Apurakenteet pakkaus sisältää tarvittavia avustavia tietorakenteita
  */
 package apurakenteet;
 
@@ -8,15 +7,24 @@ import sanaindeksi.Tiedostot;
 
 /**
  *
- * @author Kati JoustavaTaulukko olio korvaa Sanahaku ohjelmassa tarvittavat
+ * @author Kati
+ * JoustavaTaulukko olio korvaa Sanahaku ohjelmassa tarvittavat
  * osat ArrayList rakenteesta
+ 
+ */
+public class JoustavaTaulukko {
+
+ /**
+ *
+ * @author Kati 
+ * 
  *
  * Sisältää dataoliot joustavaTaulukko joka on joustavan mittainen
  * yksiulotteinen taulukko, oletuskoko 100 alkiota i, joka on indeksi taulukon
  * ensimmäiseen tyhjään alkioon ja ilmaisee samalla myös taulukon täyttöasteen
  */
-public class JoustavaTaulukko {
 
+    
     private Object[] joustavaTaulukko;
     //private String[] joustavaTaulukko;
     private int i;
@@ -33,6 +41,10 @@ public class JoustavaTaulukko {
         this.i = 0;
     }
     
+    /**
+     * Konstruktori, joka alustaa joustavan taulukon Tiedosto-tyyppisillä olioilla
+     * @param t, parametri ilmaisee että kyseessä on Tiedostot tyyppisiä olioita
+     */
     public JoustavaTaulukko(char t ) {
         this.joustavaTaulukko = new Tiedostot [100];
         this.i = 0;
@@ -40,7 +52,7 @@ public class JoustavaTaulukko {
     
 
     /**
-     * Metodi getJoustavaLista palauttaa
+     * Metodi getJoustavaLista palauttaa joustavaTaulukko objektin
      * @return joustavaTaulukko-objektin
      */
     public Object[] getJoustavaLista() {
@@ -49,8 +61,8 @@ public class JoustavaTaulukko {
     }
 
     /**
-     * Metodi getI palauttaa
-     * @return indeksin i arvon, indeksi osoittaa taulukon ensimmäiseen tyhjään alkioon
+     * Metodi getI palauttaa indeksin i arvon, joka osoittaa ensimmäiseen tyhjään alkioon
+     * @return i
      */
     public int getI() {
         return i;
@@ -59,8 +71,8 @@ public class JoustavaTaulukko {
     /**
      * Metodi getJoustavaListaItem palauttaa parametrina saadun indeksin 
      * osoittaman taulukon alkion, jos alkio on listaan lisättyjen alkioiden arvoalueella
-     * @param ind, indeksi jonka osoittamaa alkiota pyydetään
-     * @return, palauttaa joustavanTaulukon alkion tai arvon null jos indeksi osoittaa ohi taulukkoon
+     * @param ind jonka osoittamaa alkiota pyydetään
+     * @return joustavaTaulukko[ind] palauttaa joustavanTaulukon alkion tai arvon null jos indeksi osoittaa ohi taulukkoon
      * lisättyjen alkioiden
      */
     public Object getJoustavaListaItem(int ind) {
@@ -74,7 +86,7 @@ public class JoustavaTaulukko {
     /**
      * Metodi getJoustavaListaLength palauttaa joustavan listan pituuden
      * siis taulukon koko kapasiteetti
-     * @return int joustavanTaulukon pituus
+     * @return joustavanTaulukko.length, joustavan taulukon pituus
      */
     public int getJoustavaListaLength() {
         return joustavaTaulukko.length;
@@ -84,7 +96,7 @@ public class JoustavaTaulukko {
      * Metodi lisaaJoustavaanTaulukkoon lisää parametrina saavansa
      * objektin joustavanTaulukon seuraavaan tyhjään paikkaan,
      * jos taulukko on täynnä, suurennetaan taulukkoa
-     * @param lisattava
+     * @param lisattava taulukkoon lisättävä alkio
      */
     public void lisaaJoustavaanTaulukkoon(Object lisattava) {
         //public boolean lisaaJoustavaanTaulukkoon(String lisattava) {

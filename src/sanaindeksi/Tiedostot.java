@@ -11,6 +11,10 @@ import apurakenteet.JoustavaTaulukko;
 /**
  *
  * @author Kati
+ * Tiedostot luokka on tieto-olio, joka sisältää
+ * tiedoston nimen String tyyppisessä oliossa ja
+ * joustavan mittaisen taulukon
+ * 
  */
 public class Tiedostot {
     String tiedostonNimi;
@@ -19,9 +23,10 @@ public class Tiedostot {
 
     //public Tiedostot(String tiedostonNimi, ArrayList<String> tiedosto) {
     /**
-     *
+     * Konstruktori alustaa olion sijoittamalla parametrina saadun 
+     * tiedoston nimen sekä tiedoston rivit joustavan mittaisen taulukon kenttiin
      * @param tiedostonNimi
-     * @param tiedosto
+     * @param tiedosto tiedostosta luetut rivit joustavanmittaisessa taulukossa
      */
     public Tiedostot(String tiedostonNimi, JoustavaTaulukko tiedosto) {
         this.tiedostonNimi = tiedostonNimi;
@@ -29,8 +34,8 @@ public class Tiedostot {
     }
 
     /**
-     *
-     * @return
+     * Metodi getTiedostonNimi
+     * @return palauttaa tiedoston nimen
      */
     public String getTiedostonNimi() {
         return tiedostonNimi;
@@ -40,8 +45,8 @@ public class Tiedostot {
 //        return tiedosto;
 //    }
     /**
-     *
-     * @return
+     * Metodi getTiedosto 
+     * @return palauttaa JoustavaTaulukko tyyppisen tiedoston
      */
     public JoustavaTaulukko getTiedosto() {
         return tiedosto;

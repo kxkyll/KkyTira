@@ -12,24 +12,23 @@ import kayttoliittyma.TekstiLiittyma;
 /**
  *
  * @author Kati
- * Käynnistetään Sanahakuohjelman tekstipohjainen käyttöliittymä
+ * Sanahakuohjelman Main luokka
+ * 
  */
 
 public class Main {
 
       
     /**
-     *
+     * Main metodi, käynnistetään Sanahakuohjelman tekstipohjainen käyttöliittymä
      * @param args
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        
-      
+              
         TekstiLiittyma tekstiKaytto = new TekstiLiittyma();
         tekstiKaytto.kaynnisty();
-         
-        
+                
     }
 
 }

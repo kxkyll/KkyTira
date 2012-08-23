@@ -98,8 +98,9 @@ public class TekstiLiittyma {
     }
 
     /**
-     *
-     * @param loydetytRivit
+     * Metodi tulostaLoydetytRivit tulostaa tiedostoittain ne rivit, joilla haettava sana esiintyy
+     * @param loydetytRivit taulukko joka sisältää löydettyjen rivien rivinumerot, kukin rivi 
+     * sisältää yhden tiedoston osumat
      */
     public void tulostaLoydetytRivit(int[][] loydetytRivit) {
         System.out.println("Haun tulos:");
