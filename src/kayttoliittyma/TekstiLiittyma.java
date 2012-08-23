@@ -6,7 +6,6 @@ package kayttoliittyma;
 
 import apurakenteet.JoustavaTaulukko;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import sanaindeksi.MuodostaPuu;
 import sanaindeksi.Tiedostot;
@@ -20,7 +19,8 @@ public class TekstiLiittyma {
 
     static Scanner lukija = new Scanner(System.in);
     TiedostonLuku tiedostonLuku = new TiedostonLuku();
-    ArrayList<Tiedostot> luetutTiedostot;
+    JoustavaTaulukko luetutTiedostot;
+    //ArrayList<Tiedostot> luetutTiedostot;
 
     /**
      *
@@ -37,7 +37,8 @@ public class TekstiLiittyma {
         int tiedostoLaskuri = 0;
         JoustavaTaulukko luettuTiedosto = new JoustavaTaulukko();
         //ArrayList<String> luettuTiedosto = new ArrayList<String>();
-        luetutTiedostot = new ArrayList<Tiedostot>();
+      //  luetutTiedostot = new ArrayList<Tiedostot>();
+          luetutTiedostot = new JoustavaTaulukko('t');
         System.out.println("Anna ladattavan tiedoston hakupolku ja nimi (tyhjä merkkijono lopettaa)");
         while (jatka) {
             while (lisaaTiedostoja) {
@@ -50,8 +51,9 @@ public class TekstiLiittyma {
 
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
                         if (luettuTiedosto != null) {
-                            System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
-                            luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
+                            //System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
+                            luetutTiedostot.lisaaJoustavaanTaulukkoon(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
+                            //luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
 
                             System.out.println("Tiedoston sisältö:");
 //                            String [] apuTaulukko = luettuTiedosto.getJoustavaLista();
@@ -106,7 +108,8 @@ public class TekstiLiittyma {
 
             for (int j = 1; j < loydetytRivit.length; j++) {
                 if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
-                    Tiedostot loydetty = luetutTiedostot.get(i - 1);
+                   // Tiedostot loydetty = luetutTiedostot.get(i - 1);
+                     Tiedostot loydetty = (Tiedostot) luetutTiedostot.getJoustavaListaItem(i - 1);
                     if (!tiedostonNimiTulostettu) {
                         System.out.println("Tiedostosta: " + loydetty.getTiedostonNimi() + " löytyivät rivit: ");
                         tiedostonNimiTulostettu = true;
