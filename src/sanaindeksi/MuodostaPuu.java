@@ -34,6 +34,9 @@ public class MuodostaPuu {
         trie = perusTrie(tiedostoNumero);
     }
 
+    /**
+     *
+     */
     public MuodostaPuu() {
     }
 
@@ -48,7 +51,7 @@ public class MuodostaPuu {
         int riviNumero = 0;
         //for (String rivi : tiedostonRivit) {
             for (int i = 0; i < tiedostonRivit.getI() ; i++) {
-            String rivi = tiedostonRivit.getJoustavaListaItem(i);
+            String rivi = (String) tiedostonRivit.getJoustavaListaItem(i);
             //System.out.println("rivi ennen korvausta: " + rivi);
            
             rivi = rivi.replaceAll("[,.:!;\"?]", "");
@@ -107,6 +110,12 @@ public class MuodostaPuu {
     }
 
     //public Trie lisaaTiedosto(ArrayList<String> luettuTiedosto, int tiedostoLaskuri) {
+    /**
+     *
+     * @param luettuTiedosto
+     * @param tiedostoLaskuri
+     * @return
+     */
     public Trie lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
         System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
         //this.tiedostonRivit = luettuTiedosto;

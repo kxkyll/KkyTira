@@ -17,11 +17,20 @@ public class Tiedostot {
     JoustavaTaulukko tiedosto;
 
     //public Tiedostot(String tiedostonNimi, ArrayList<String> tiedosto) {
+    /**
+     *
+     * @param tiedostonNimi
+     * @param tiedosto
+     */
     public Tiedostot(String tiedostonNimi, JoustavaTaulukko tiedosto) {
         this.tiedostonNimi = tiedostonNimi;
         this.tiedosto = tiedosto;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTiedostonNimi() {
         return tiedostonNimi;
     }
@@ -29,6 +38,10 @@ public class Tiedostot {
 //    public ArrayList<String> getTiedosto() {
 //        return tiedosto;
 //    }
+    /**
+     *
+     * @return
+     */
     public JoustavaTaulukko getTiedosto() {
         return tiedosto;
     }

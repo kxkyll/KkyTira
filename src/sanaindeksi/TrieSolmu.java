@@ -143,6 +143,7 @@ public class TrieSolmu {
      * parametrina saatu kirjain on, jos kyseistä kirjainta ei ole minkään
      * lapsisolmun arvona, metodi palauttaa arvon null
      * @param kirjain etsittävä kirjain
+     * @return  
      *
      */
     public TrieSolmu etsiKirjain(char kirjain) {
@@ -162,7 +163,8 @@ public class TrieSolmu {
      *
      * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen
      * lapsiSolmuun, muutoin metodi palauttaa arvon null
-     * @param uusiLapsi
+     * @param uusiLapsi lisättävä lapsisolmu
+     * @return uusiLapsi  
      *
      */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {

@@ -30,7 +30,6 @@ public class TiedostonLuku {
      * @param tiedostonnimi Käyttäjän antama tiedostonnimi hakemistopolkuineen
      * @return ArrayList<String> Käyttäjän antaman tiedostonnimen mukaan luettu
      * tiedoston sisältö riveittäin
-     * @throws IOException
      */
     // Testitiedosto C:\Users\Kati\Documents\Opiskelu\Tekstit\testirivit.txt
     //public ArrayList<String> lueTiedostoLevylta(String tiedostonnimi) {

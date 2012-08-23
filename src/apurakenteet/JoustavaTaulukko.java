@@ -9,49 +9,81 @@ package apurakenteet;
  * @author Kati
  */
 public class JoustavaTaulukko {
-
-    private String[] joustavaTaulukko;
+    private Object[] joustavaTaulukko;
+    //private String[] joustavaTaulukko;
     private int i;
 
+    /**
+     *
+     */
     public JoustavaTaulukko() {
-        this.joustavaTaulukko = new String[100];
+            this.joustavaTaulukko = new Object[100];
+        //this.joustavaTaulukko = new String[100];
+        
         this.i = 0;
     }
 
-    public String[] getJoustavaLista() {
+    /**
+     *
+     * @return
+     */
+    public Object[] getJoustavaLista() {
+    //public String[] getJoustavaLista() {
         return joustavaTaulukko;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getI() {
         return i;
     }
 
-    public String getJoustavaListaItem(int ind) {
+    /**
+     *
+     * @param ind
+     * @return
+     */
+    public Object getJoustavaListaItem(int ind) {
+    //public String getJoustavaListaItem(int ind) {
         if (ind >= 0 && ind <= i) {
             return joustavaTaulukko[ind];
         }
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getJoustavaListaLength() {
         return joustavaTaulukko.length;
     }
 
-    public boolean lisaaJoustavaanTaulukkoon(String lisattava) {
+    /**
+     *
+     * @param lisattava
+     */
+    public void lisaaJoustavaanTaulukkoon(Object lisattava) {
+    //public boolean lisaaJoustavaanTaulukkoon(String lisattava) {
         if (i < joustavaTaulukko.length) {
             joustavaTaulukko[i] = lisattava;
             i++;
+            
         } else {
             kasvataJoustavaTaulukko();
             joustavaTaulukko[i] = lisattava;
             i++;
+            
         }
 
-        return false;
+     
     }
 
     private void kasvataJoustavaTaulukko() {
-        String[] apuTaulukko = new String[joustavaTaulukko.length * 2];
+        Object[] apuTaulukko = new Object[joustavaTaulukko.length * 2];
+//        String[] apuTaulukko = new String[joustavaTaulukko.length * 2];
         for (int ind = 0; ind < apuTaulukko.length; ind++) {
             if (ind < joustavaTaulukko.length) {
                 apuTaulukko[ind] = joustavaTaulukko[ind];

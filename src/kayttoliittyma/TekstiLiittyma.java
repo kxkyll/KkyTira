@@ -95,6 +95,10 @@ public class TekstiLiittyma {
         }
     }
 
+    /**
+     *
+     * @param loydetytRivit
+     */
     public void tulostaLoydetytRivit(int[][] loydetytRivit) {
         System.out.println("löydetyt:");
         Boolean tiedostonNimiTulostettu = false;

@@ -17,23 +17,38 @@ import static org.junit.Assert.*;
  */
 public class TrieTest {
     
+    /**
+     *
+     */
     public TrieTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
      //   Trie testiTrie = new Trie();
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
         //Trie testiTrie = new Trie();
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
