@@ -85,10 +85,6 @@ public class TekstiLiittyma {
                     System.out.println("Haettavaa sanaa " + haettavaSana + " ei löytynyt");
                 }
             }
-//            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
-//            if (sanaLoytyi) {
-//                System.out.println("sana: " + haettavaSana + "löytyi");
-//            }
 
         }
     }
@@ -107,12 +103,12 @@ public class TekstiLiittyma {
                     }
                     ArrayList<String> loydettyRivit = loydetty.getTiedosto();
                     System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.get(loydetytRivit[i][j]));
-                    //         System.out.println(tiedostonRivit.get(loydetytRivit[i][j]));
+
                 }
 
             }
             tiedostonNimiTulostettu = false;
-            //System.out.println("");
+
         }
     }
 

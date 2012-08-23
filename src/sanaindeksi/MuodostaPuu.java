@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 public class MuodostaPuu {
-
+    //private String [] tiedostonRivit;
     private ArrayList<String> tiedostonRivit;
     Trie trie = new Trie();
 
@@ -46,18 +46,18 @@ public class MuodostaPuu {
 
         int riviNumero = 0;
         for (String rivi : tiedostonRivit) {
-            System.out.println("rivi ennen korvausta: " + rivi);
+//            System.out.println("rivi ennen korvausta: " + rivi);
             rivi = rivi.replaceAll("[,.:!;\"?]", "");
-            System.out.println("rivi korvauksen jälkeen: " + rivi);
+//            System.out.println("rivi korvauksen jälkeen: " + rivi);
             String rivinSanat[] = rivi.split(" ");
-            System.out.println("rivinSanat: ");
+//            System.out.println("rivinSanat: ");
+//            for (int i = 0; i < rivinSanat.length; i++) {
+//                System.out.println(rivinSanat[i]);
+//            }
             for (int i = 0; i < rivinSanat.length; i++) {
-                System.out.println(rivinSanat[i]);
-            }
-            for (int i = 0; i < rivinSanat.length; i++) {
-                System.out.println("rivinSanat: " + rivinSanat[i]);
-                System.out.println("tiedostoNumero: " + tiedostoNumero);
-                System.out.println("riviNumero: " + riviNumero);
+//                System.out.println("rivinSanat: " + rivinSanat[i]);
+//                System.out.println("tiedostoNumero: " + tiedostoNumero);
+//                System.out.println("riviNumero: " + riviNumero);
                 trie = trie.lisaaSana(rivinSanat[i], tiedostoNumero, riviNumero);
             }
             riviNumero++;
