@@ -55,21 +55,21 @@ public class TekstiLiittyma {
                             luetutTiedostot.lisaaJoustavaanTaulukkoon(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
                             //luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
 
-                            System.out.println("Tiedoston sisältö:");
+//                            System.out.println("Tiedoston sisältö:");
 //                            String [] apuTaulukko = luettuTiedosto.getJoustavaLista();
 //                            for (String rivi : apuTaulukko) {
 //                                System.out.println(rivi);
 //                            }
-                            for (int i = 0; i< luettuTiedosto.getI();i++) {
-                                System.out.println(luettuTiedosto.getJoustavaListaItem(i));
-                            }
+//                            for (int i = 0; i< luettuTiedosto.getI();i++) {
+//                                System.out.println(luettuTiedosto.getJoustavaListaItem(i));
+//                            }
                             tiedostoLaskuri++;
-                            System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
+//                            System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
                             if (muodostaPuu != null) {
-                                System.out.println("Muodostapuu ei ole null, lisätään tiedosto");
+//                                System.out.println("Muodostapuu ei ole null, lisätään tiedosto");
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             } else {
-                                System.out.println("MuodostaPuu on null, luodaan uusi puu");
+//                                System.out.println("MuodostaPuu on null, luodaan uusi puu");
                                 muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
                             }
                         } else {
@@ -102,7 +102,7 @@ public class TekstiLiittyma {
      * @param loydetytRivit
      */
     public void tulostaLoydetytRivit(int[][] loydetytRivit) {
-        System.out.println("löydetyt:");
+        System.out.println("Haun tulos:");
         Boolean tiedostonNimiTulostettu = false;
         for (int i = 1; i < loydetytRivit.length; i++) {
 

@@ -74,28 +74,7 @@ public class TiedostonLuku {
 
     }
 
-    //    public ArrayList<String> lueTiedostoLevylta(String tiedostonNimi) throws IOException {
-//        System.out.println("Tiedostonnimi: " +tiedostonNimi);
-//        try {
-//            Scanner tiedostonLukija = new Scanner(tiedostonNimi);
-//            int riviNumero = 1;
-//           
-//            while (tiedostonLukija.hasNextLine()) {
-//                System.out.println("Rivinumero: " +riviNumero );
-//                String riviTeksti = tiedostonLukija.nextLine();
-//                System.out.println("Riviteksti: " +riviTeksti);
-//                tiedostonRivit.add(riviTeksti);
-//                //tiedostonRivit.add(tiedostonLukija.nextLine());
-//            }
-//            tiedostonLukija.close();
-//        } catch (Exception tiedostoVirhe) {
-//            System.out.println("Virhe tiedoston käsittelyssä");
-//
-//        }
-//
-//
-//        return tiedostonRivit;
-//    }
+
     /**
      * Metodi lueTiedostoNetista lukee käyttäjän antaman tiedoston internetistä
      *

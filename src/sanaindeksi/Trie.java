@@ -27,14 +27,14 @@ public class Trie {
      * @return
      */
     public Trie lisaaSana(String sana, int tiedostoNumero, int riviNumero) {
-        System.out.println("lisaaSana");
+   //     System.out.println("lisaaSana");
         TrieSolmu nykyinenSolmu;
         int vikanKirjaimenPaikka;
 
         if (sana.length() > 0) {
             
             sana = sana.toLowerCase();
-            System.out.println("sana: " + sana);
+     //       System.out.println("sana: " + sana);
             vikanKirjaimenPaikka = sana.length() - 1;
 
             nykyinenSolmu = juuriSolmu;
@@ -42,19 +42,19 @@ public class Trie {
                 TrieSolmu uusiLapsi = nykyinenSolmu.etsiKirjain(sana.charAt(i)); // etsitään löytyykö solmua joka jo sisältää kirjaimen
 
                 if (uusiLapsi != null) {
-                    System.out.println("uusiLapsi ei null");
+       //             System.out.println("uusiLapsi ei null");
                     nykyinenSolmu = uusiLapsi; // löytyi: mennään hakupuun seuraavalle tasolle
                 } else {
-                    System.out.println("uusiLapsi on null");
+       //             System.out.println("uusiLapsi on null");
                     uusiLapsi = new TrieSolmu(sana.charAt(i)); // ei löytynyt: tehdään uusi lapsi
-                    System.out.println("uusiLapsi kirjain: " + uusiLapsi.getKirjain());
+       //             System.out.println("uusiLapsi kirjain: " + uusiLapsi.getKirjain());
                     nykyinenSolmu = nykyinenSolmu.lisaaLapsi(uusiLapsi); // lisätään uusi lapsi lapsilistalle
                 }
 
                 if (i == vikanKirjaimenPaikka) {
-                    System.out.println("vika kirjain");
+       //             System.out.println("vika kirjain");
                     nykyinenSolmu.setSananVikaKirjain(true);
-                    System.out.println("vikakirjain astettu");
+       //             System.out.println("vikakirjain astettu");
                     nykyinenSolmu.setSijaintiTekstissa(tiedostoNumero, riviNumero);
                 }
             }
@@ -68,8 +68,8 @@ public class Trie {
      * @return
      */
     public int[][] etsiSana(String sana) {
-        System.out.println("Metodi etsiSana");
-        System.out.println("etsittävä sana: " + sana);
+      //  System.out.println("Metodi etsiSana");
+      //  System.out.println("etsittävä sana: " + sana);
 
         TrieSolmu nykyinenSolmu;
         TrieSolmu lapsiSolmu;
@@ -77,17 +77,17 @@ public class Trie {
         if (sana.length() > 0) {
             sana = sana.toLowerCase();
             nykyinenSolmu = juuriSolmu;
-            System.out.println("sana.length: " + sana.length());
+       //     System.out.println("sana.length: " + sana.length());
 
             for (int i = 0; i < sana.length(); i++) {
-                System.out.println("indeksi i: " + i);
-                System.out.println("etsittävä kirjain: " + sana.charAt(i));
+         //       System.out.println("indeksi i: " + i);
+         //       System.out.println("etsittävä kirjain: " + sana.charAt(i));
 
                 lapsiSolmu = nykyinenSolmu.etsiKirjain(sana.charAt(i));
 
                 if (lapsiSolmu != null) {
                     nykyinenSolmu = lapsiSolmu;
-                    System.out.println("lapsi ei ole null");
+           //         System.out.println("lapsi ei ole null");
                 } else {
                    // System.out.println("oikeaa ei löytynyt");
                     return null; // kirjainta ei löytynyt  

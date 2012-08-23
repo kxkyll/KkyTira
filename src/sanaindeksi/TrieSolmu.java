@@ -81,7 +81,7 @@ public class TrieSolmu {
             sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
             sarake++;
         } else {
-            System.out.println("SijaintiTekstissa taulukko täynnä: ");
+//            System.out.println("SijaintiTekstissa taulukko täynnä: ");
             int[][] uusiTaulu = new int[sijaintiTekstissa[0].length * 2][sijaintiTekstissa.length * 2];
             uusiTaulu = siirraTaulukonTiedot(uusiTaulu, sijaintiTekstissa);
             sijaintiTekstissa = uusiTaulu;
@@ -133,7 +133,7 @@ public class TrieSolmu {
      * @return palauttaa sanan sijaintitaulun
      */
     public int[][] getSijaintiTekstissa() {
-        System.out.println("getSijaintiTekstissa");
+        //System.out.println("getSijaintiTekstissa");
         return sijaintiTekstissa;
     }
 
@@ -149,10 +149,10 @@ public class TrieSolmu {
     public TrieSolmu etsiKirjain(char kirjain) {
 
         for (TrieSolmu l : lapsiLista) {
-            System.out.println("l.getKirjain: " + l.getKirjain());
-            System.out.println("kirjain: " + kirjain);
+            //System.out.println("l.getKirjain: " + l.getKirjain());
+            //System.out.println("kirjain: " + kirjain);
             if (l.getKirjain() == kirjain) {
-                System.out.println("kirjain täsmää");
+              //  System.out.println("kirjain täsmää");
                 return l;
             }
         }

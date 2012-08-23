@@ -82,11 +82,11 @@ public class MuodostaPuu {
      * tiedostossa haettava sana esiintyy
      */
     public int[][] haeSana(String haettavaSana) {
-        System.out.println("Metodi haeSana");
+//        System.out.println("Metodi haeSana");
         int[][] loydetytRivit = trie.etsiSana(haettavaSana);
-        if (loydetytRivit != null) {
-            tulostaRivit(loydetytRivit);
-        }
+//        if (loydetytRivit != null) {
+//            tulostaRivit(loydetytRivit);
+//        }
         return loydetytRivit;
     }
 
@@ -117,7 +117,7 @@ public class MuodostaPuu {
      * @return
      */
     public Trie lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
-        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
+//        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
         //this.tiedostonRivit = luettuTiedosto;
         this.tiedostonRivit = luettuTiedosto;
         trie = perusTrie(tiedostoLaskuri);

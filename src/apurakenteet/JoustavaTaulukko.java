@@ -27,6 +27,7 @@ public class JoustavaTaulukko {
      *  indeksin i arvoon 0
      */
     public JoustavaTaulukko() {
+        //this.joustavaTaulukko = new Object[2];
         this.joustavaTaulukko = new Object[100];
         //this.joustavaTaulukko = new String[100];
         this.i = 0;
@@ -107,6 +108,7 @@ public class JoustavaTaulukko {
      */
 
     private void kasvataJoustavaTaulukko() {
+        //System.out.println("kasvatetaan JoustavaaTaulukkoa");
         Object[] apuTaulukko = new Object[joustavaTaulukko.length * 2];
 //        String[] apuTaulukko = new String[joustavaTaulukko.length * 2];
         for (int ind = 0; ind < apuTaulukko.length; ind++) {
