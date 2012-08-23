@@ -25,27 +25,36 @@ public class TiedostonLuku {
 
     /**
      * Metodi lueTiedostoLevylta lukee käyttäjän antaman tiedoston levyltä
+     *
      * @param tiedostonnimi Käyttäjän antama tiedostonnimi hakemistopolkuineen
-     * @return ArrayList<String> Käyttäjän antaman tiedostonnimen mukaan luettu tiedoston sisältö riveittäin
-     * @throws IOException  
+     * @return ArrayList<String> Käyttäjän antaman tiedostonnimen mukaan luettu
+     * tiedoston sisältö riveittäin
+     * @throws IOException
      */
     // Testitiedosto C:\Users\Kati\Documents\Opiskelu\Tekstit\testirivit.txt
-    public ArrayList<String> lueTiedostoLevylta(String tiedostonnimi) throws IOException {
+    public ArrayList<String> lueTiedostoLevylta(String tiedostonnimi) {
         BufferedReader tiedostonLukija = null;
         String tiedostonRivi = null;
         tiedostonRiviLista = new ArrayList<String>();
         try {
 
             tiedostonLukija = new BufferedReader(new FileReader(tiedostonnimi));
-//            System.out.println("tiedosto avattu lukemista varten");
-            while ((tiedostonRivi = tiedostonLukija.readLine()) != null) {
-                tiedostonRiviLista.add(tiedostonRivi);
+            try {
+                //            System.out.println("tiedosto avattu lukemista varten");
+                while ((tiedostonRivi = tiedostonLukija.readLine()) != null) {
+                    tiedostonRiviLista.add(tiedostonRivi);
+                }
+            } catch (IOException ex) {
+                System.out.println("Tiedoston nimi tai polku virheellinen");
+                //Logger.getLogger(TiedostonLuku.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
             }
 
 
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedoston avaaminen ei onnistunut");
-            Logger.getLogger(TiedostonLuku.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(TiedostonLuku.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
 
         if (tiedostonLukija != null) {
@@ -86,10 +95,6 @@ public class TiedostonLuku {
 //
 //        return tiedostonRivit;
 //    }
-
-    
-    
-    
     /**
      * Metodi lueTiedostoNetista lukee käyttäjän antaman tiedoston internetistä
      *
@@ -99,7 +104,7 @@ public class TiedostonLuku {
         BufferedReader tiedostonLukija = null;
         String tiedostonRivi = null;
         tiedostonRiviLista = new ArrayList<String>();
-        
+
         HttpURLConnection yhteys;
     }
 }

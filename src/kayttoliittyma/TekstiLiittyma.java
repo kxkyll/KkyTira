@@ -45,24 +45,28 @@ public class TekstiLiittyma {
                 } else {
                     System.out.println("Annoit tiedoston: " + ladattavaTiedosto);
                     if (ladattavaTiedosto.endsWith("txt")) {
-                        tiedostoLaskuri++;
+
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
-                        System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
-                        luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
+                        if (luettuTiedosto != null) {
+                            System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
+                            luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
 
-                        System.out.println("Tiedoston sisältö:");
-                        for (String rivi : luettuTiedosto) {
-                            System.out.println(rivi);
-                        }
-                        System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
-                        if (muodostaPuu != null) {
-                            System.out.println("Muodostapuu ei ole null, lisätään tiedosto");
-                            muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
+                            System.out.println("Tiedoston sisältö:");
+                            for (String rivi : luettuTiedosto) {
+                                System.out.println(rivi);
+                            }
+                            tiedostoLaskuri++;
+                            System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
+                            if (muodostaPuu != null) {
+                                System.out.println("Muodostapuu ei ole null, lisätään tiedosto");
+                                muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
+                            } else {
+                                System.out.println("MuodostaPuu on null, luodaan uusi puu");
+                                muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
+                            }
                         } else {
-                            System.out.println("MuodostaPuu on null, luodaan uusi puu");
-                            muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
+                            System.out.println("Tiedostonnimi virheellinen");
                         }
-
                     }
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
@@ -77,8 +81,8 @@ public class TekstiLiittyma {
                 int[][] loydetytRivit = muodostaPuu.haeSana(haettavaSana);
                 if (loydetytRivit != null) {
                     tulostaLoydetytRivit(loydetytRivit);
-                }else {
-                    System.out.println("Haettavaa sanaa "+haettavaSana +" ei löytynyt");
+                } else {
+                    System.out.println("Haettavaa sanaa " + haettavaSana + " ei löytynyt");
                 }
             }
 //            Boolean sanaLoytyi = muodostaPuu.haeSana(haettavaSana);
