@@ -37,6 +37,10 @@ public class TrieSolmu {
         alustaSijaintiTekstissa();
     }
 
+    public TrieSolmu() {
+        //todo: tarvitaanko tätä
+    }
+
     /**
      *
      * @param sananVikaKirjain ilmaisee onko tämä kirjain jonkin sanan viimeinen
