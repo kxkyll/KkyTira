@@ -4,6 +4,7 @@
  */
 package sanaindeksi;
 
+import apurakenteet.LinkitettyLista;
 import java.util.LinkedList;
 
 /**
@@ -19,7 +20,8 @@ public class TrieSolmu {
     private boolean sananVikaKirjain;
     private int[][] sijaintiTekstissa;
     private int sarake;
-    private LinkedList<TrieSolmu> lapsiLista;
+    //private LinkedList<TrieSolmu> lapsiLista;
+    private LinkitettyLista lapsiLista;
 
     /**
      * Konstruktorissa alustetaan TrieSolmu parametrina saatavalla kirjaimella
@@ -29,15 +31,18 @@ public class TrieSolmu {
      * saa arvon false ja alustetaan LinkitettyLista lapsiLista
      */
     public TrieSolmu(char kirjain) {
+        System.out.println("TrieSolmun konstruktori");
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
         this.sijaintiTekstissa = new int[10][10];
         this.sarake = 1;
-        this.lapsiLista = new LinkedList<TrieSolmu>();
+        //this.lapsiLista = new LinkedList<TrieSolmu>();
+        this.lapsiLista = new LinkitettyLista();
         alustaSijaintiTekstissa();
     }
 
     public TrieSolmu() {
+        System.out.println("TrieSolmun tyhjä konstruktori");
         //todo: tarvitaanko tätä
     }
 
@@ -128,8 +133,12 @@ public class TrieSolmu {
      *
      * @return palauttaa TrieSolmun lapsilistan
      */
-    public LinkedList<TrieSolmu> getLapsiLista() {
-        return lapsiLista;
+//    public LinkedList<TrieSolmu> getLapsiLista() {
+//        return lapsiLista;
+//    }
+    public LinkitettyLista getLapsiLista() {
+        System.out.println("getLapsiLista");
+        return lapsiLista.getLinkitettyLista();
     }
 
     /**
@@ -152,13 +161,22 @@ public class TrieSolmu {
      *
      */
     public TrieSolmu etsiKirjain(char kirjain) {
-
-        for (TrieSolmu l : lapsiLista) {
-            //System.out.println("l.getKirjain: " + l.getKirjain());
-            //System.out.println("kirjain: " + kirjain);
-            if (l.getKirjain() == kirjain) {
-              //  System.out.println("kirjain täsmää");
-                return l;
+        System.out.println("etsiKirjain" +kirjain);
+//        for (TrieSolmu l : lapsiLista) {
+//            //System.out.println("l.getKirjain: " + l.getKirjain());
+//            //System.out.println("kirjain: " + kirjain);
+//            if (l.getKirjain() == kirjain) {
+//              //  System.out.println("kirjain täsmää");
+//                return l;
+//            }
+//        }
+        LinkitettyLista seuraava = lapsiLista.getSeuraava();
+        while (seuraava != null) {
+            System.out.println("lapsilistan seuraavana on kirjain: "+seuraava.getListaSolmu().getKirjain());
+            if (seuraava.getListaSolmu().getKirjain() == kirjain) {
+                return seuraava.getListaSolmu();
+            } else {
+                seuraava = seuraava.getSeuraava();
             }
         }
         return null;
@@ -173,7 +191,8 @@ public class TrieSolmu {
      *
      */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
-        boolean onnistui = this.lapsiLista.add(uusiLapsi);
+        //boolean onnistui = this.lapsiLista.add(uusiLapsi);
+        boolean onnistui = this.lapsiLista.lisaaSolmu(uusiLapsi);
         if (onnistui) {
             return uusiLapsi;
         }

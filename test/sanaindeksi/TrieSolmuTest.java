@@ -4,6 +4,7 @@
  */
 package sanaindeksi;
 
+import apurakenteet.LinkitettyLista;
 import java.util.LinkedList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -112,8 +113,13 @@ public class TrieSolmuTest {
     public void testGetLapsiLista() {
         System.out.println("getLapsiLista");
         TrieSolmu trieSolmu = new TrieSolmu ('a');
-        LinkedList expResult = new LinkedList ();
-        LinkedList result = trieSolmu.getLapsiLista();
+
+        //LinkedList expResult = new LinkedList ();
+        LinkitettyLista expResult;
+        expResult = new LinkitettyLista();
+        
+        //LinkedList result = trieSolmu.getLapsiLista();
+        LinkitettyLista result = trieSolmu.getLapsiLista();
         assertEquals(expResult, result);
         
     }

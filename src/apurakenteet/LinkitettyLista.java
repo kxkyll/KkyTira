@@ -16,7 +16,7 @@ public class LinkitettyLista {
     private LinkitettyLista seuraava;
 
     public LinkitettyLista() {
-        listaSolmu = new TrieSolmu();
+        listaSolmu = null;
         seuraava = null;
     }
 
