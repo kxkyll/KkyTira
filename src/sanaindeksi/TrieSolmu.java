@@ -31,7 +31,7 @@ public class TrieSolmu {
      * saa arvon false ja alustetaan LinkitettyLista lapsiLista
      */
     public TrieSolmu(char kirjain) {
-        System.out.println("TrieSolmun konstruktori");
+        //System.out.println("TrieSolmun konstruktori");
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
         this.sijaintiTekstissa = new int[10][10];
@@ -162,7 +162,7 @@ public class TrieSolmu {
      *
      */
     public TrieSolmu etsiKirjain(char kirjain) {
-        System.out.println("etsiKirjain " + kirjain);
+        //System.out.println("etsiKirjain " + kirjain);
 //        for (TrieSolmu l : lapsiLista) {
 //            //System.out.println("l.getKirjain: " + l.getKirjain());
 //            //System.out.println("kirjain: " + kirjain);
@@ -171,27 +171,27 @@ public class TrieSolmu {
 //                return l;
 //            }
 //        }
-        System.out.println("oma kirjain: " + this.getKirjain());
-        System.out.println("lapsilista: ");
-        LinkitettyLista s = this.lapsiLista.getSeuraava();
-        int i = 0;
-        while (s != null) {
-            System.out.println("listan alkio " + i + ": " + s.getListaSolmu().getKirjain());
-            s = s.getSeuraava();
-            i++;
-        }
+//        System.out.println("oma kirjain: " + this.getKirjain());
+//        System.out.println("lapsilista: ");
+//        LinkitettyLista s = this.lapsiLista.getSeuraava();
+//        int i = 0;
+//        while (s != null) {
+//            System.out.println("listan alkio " + i + ": " + s.getListaSolmu().getKirjain());
+//            s = s.getSeuraava();
+//            i++;
+//        }
 
 
 
         LinkitettyLista seuraava = this.lapsiLista.getSeuraava();
         while (seuraava != null) {
-            System.out.println("lapsilistan seuraavana on kirjain: " + seuraava.getListaSolmu().getKirjain());
+           // System.out.println("lapsilistan seuraavana on kirjain: " + seuraava.getListaSolmu().getKirjain());
             if (seuraava.getListaSolmu().getKirjain() == kirjain) {
                 return seuraava.getListaSolmu();
             } else {
                 seuraava = seuraava.getSeuraava();
             }
-            // Tähän pitää saada systeemi, jolla uusi kirjain viedään listan viimeiseksi
+            
         }
         return null;
     }
