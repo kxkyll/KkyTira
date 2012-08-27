@@ -37,7 +37,7 @@ public class TrieSolmu {
         this.sijaintiTekstissa = new int[10][10];
         this.sarake = 1;
         //this.lapsiLista = new LinkedList<TrieSolmu>();
-        this.lapsiLista = new LinkitettyLista();
+        this.lapsiLista = new LinkitettyLista(this);
         alustaSijaintiTekstissa();
     }
 
@@ -68,13 +68,14 @@ public class TrieSolmu {
     }
 
     /**
-     * Metodi setSijaintiTekstissa tallentaa sijaintiTekstissa-taulukkoon
-     * sanan esiintymisrivin numeron. Jos sana esiintyy useasti, taulukko täyttyy
+     * Metodi setSijaintiTekstissa tallentaa sijaintiTekstissa-taulukkoon sanan
+     * esiintymisrivin numeron. Jos sana esiintyy useasti, taulukko täyttyy
      * jolloin sen kokoa kasvatetaan.
+     *
      * @param tiedostoNumero ilmaisee missä tiedostossa sana esiintyy
      * @param riviNumero ilmaisee monennellako rivillä kyseisessä tiedostossa
      * sana esiintyy
-     * 
+     *
      */
     public void setSijaintiTekstissa(int tiedostoNumero, int riviNumero) {
 //        System.out.println("tiedostoNumero: " + tiedostoNumero);
@@ -101,8 +102,8 @@ public class TrieSolmu {
 
     /**
      *
-     * @param taulukko tulostaa kaksiulotteisen int taulukon sisällön.
-     * Käytetty testauksen apuna
+     * @param taulukko tulostaa kaksiulotteisen int taulukon sisällön. Käytetty
+     * testauksen apuna
      */
     public void tulostaTaulukko(int[][] taulukko) {
         for (int i = 0; i < taulukko.length; i++) {
@@ -161,7 +162,7 @@ public class TrieSolmu {
      *
      */
     public TrieSolmu etsiKirjain(char kirjain) {
-        System.out.println("etsiKirjain" +kirjain);
+        System.out.println("etsiKirjain " + kirjain);
 //        for (TrieSolmu l : lapsiLista) {
 //            //System.out.println("l.getKirjain: " + l.getKirjain());
 //            //System.out.println("kirjain: " + kirjain);
@@ -170,14 +171,27 @@ public class TrieSolmu {
 //                return l;
 //            }
 //        }
-        LinkitettyLista seuraava = lapsiLista.getSeuraava();
+        System.out.println("oma kirjain: " + this.getKirjain());
+        System.out.println("lapsilista: ");
+        LinkitettyLista s = this.lapsiLista.getSeuraava();
+        int i = 0;
+        while (s != null) {
+            System.out.println("listan alkio " + i + ": " + s.getListaSolmu().getKirjain());
+            s = s.getSeuraava();
+            i++;
+        }
+
+
+
+        LinkitettyLista seuraava = this.lapsiLista.getSeuraava();
         while (seuraava != null) {
-            System.out.println("lapsilistan seuraavana on kirjain: "+seuraava.getListaSolmu().getKirjain());
+            System.out.println("lapsilistan seuraavana on kirjain: " + seuraava.getListaSolmu().getKirjain());
             if (seuraava.getListaSolmu().getKirjain() == kirjain) {
                 return seuraava.getListaSolmu();
             } else {
                 seuraava = seuraava.getSeuraava();
             }
+            // Tähän pitää saada systeemi, jolla uusi kirjain viedään listan viimeiseksi
         }
         return null;
     }
@@ -187,7 +201,7 @@ public class TrieSolmu {
      * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen
      * lapsiSolmuun, muutoin metodi palauttaa arvon null
      * @param uusiLapsi solmu joka lisätään Trie hakupuuhun
-     * @return uusiLapsi tai null  
+     * @return uusiLapsi tai null
      *
      */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
@@ -207,7 +221,7 @@ public class TrieSolmu {
      *
      * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen
      * lapsiSolmuun, muutoin metodi palauttaa arvon null
-     * 
+     *
      * @param int [][] kohdeTaulu taulukko, johon kopioidaan tietoa
      *
      */
