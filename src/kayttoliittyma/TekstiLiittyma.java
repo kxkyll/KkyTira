@@ -37,8 +37,8 @@ public class TekstiLiittyma {
         int tiedostoLaskuri = 0;
         JoustavaTaulukko luettuTiedosto = new JoustavaTaulukko();
         //ArrayList<String> luettuTiedosto = new ArrayList<String>();
-      //  luetutTiedostot = new ArrayList<Tiedostot>();
-          luetutTiedostot = new JoustavaTaulukko('t');
+        //  luetutTiedostot = new ArrayList<Tiedostot>();
+        luetutTiedostot = new JoustavaTaulukko('t');
         System.out.println("Anna ladattavan tiedoston hakupolku ja nimi (tyhjä merkkijono lopettaa)");
         while (jatka) {
             while (lisaaTiedostoja) {
@@ -48,8 +48,9 @@ public class TekstiLiittyma {
                 } else {
                     System.out.println("Annoit tiedoston: " + ladattavaTiedosto);
                     if (ladattavaTiedosto.endsWith("txt")) {
-
+                        long tiedostonLukemisenAloitusHetki = System.currentTimeMillis();
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
+                        
                         if (luettuTiedosto != null) {
                             //System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
                             luetutTiedostot.lisaaJoustavaanTaulukkoon(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
@@ -75,32 +76,47 @@ public class TekstiLiittyma {
                         } else {
                             System.out.println("Tiedostonnimi virheellinen");
                         }
+                        long puunMuodostamisenLopetusHetki = System.currentTimeMillis();
+                        System.out.println("Tiedoston lukeminen ja puun muodostus veivät: "+(puunMuodostamisenLopetusHetki - tiedostonLukemisenAloitusHetki)   + " millisekuntia");
                     }
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
                     }
                 }
+                
             }
 
             String haettavaSana = kysySana();
             if (haettavaSana.isEmpty() || haettavaSana.contentEquals(" ")) {
                 jatka = false;
             } else {
+                long haunAloitusHetki = System.currentTimeMillis();
                 int[][] loydetytRivit = muodostaPuu.haeSana(haettavaSana);
+                long haunLopetusHetki = System.currentTimeMillis();
+
                 if (loydetytRivit != null) {
+                    long tulostuksenAloitusHetki = System.currentTimeMillis();
                     tulostaLoydetytRivit(loydetytRivit);
+                    long tulostuksenLopetusHetki = System.currentTimeMillis();
+                    System.out.println("Hakeminen vei:                      " + (haunLopetusHetki - haunAloitusHetki) + " millisekuntia");
+                    System.out.println("Tulostaminen vei:                   " + (tulostuksenLopetusHetki - tulostuksenAloitusHetki) + " millisekuntia");
+                    System.out.println("Hakeminen ja tulostaminen yhteensä: " + (haunLopetusHetki - haunAloitusHetki) + (tulostuksenLopetusHetki - tulostuksenAloitusHetki) + " millisekuntia");
                 } else {
                     System.out.println("Haettavaa sanaa " + haettavaSana + " ei löytynyt");
+                    System.out.println("Hakeminen vei:                      " + (haunLopetusHetki - haunAloitusHetki) + " millisekuntia");
                 }
+
             }
 
         }
     }
 
     /**
-     * Metodi tulostaLoydetytRivit tulostaa tiedostoittain ne rivit, joilla haettava sana esiintyy
-     * @param loydetytRivit taulukko joka sisältää löydettyjen rivien rivinumerot, kukin rivi 
-     * sisältää yhden tiedoston osumat
+     * Metodi tulostaLoydetytRivit tulostaa tiedostoittain ne rivit, joilla
+     * haettava sana esiintyy
+     *
+     * @param loydetytRivit taulukko joka sisältää löydettyjen rivien
+     * rivinumerot, kukin rivi sisältää yhden tiedoston osumat
      */
     public void tulostaLoydetytRivit(int[][] loydetytRivit) {
         System.out.println("Haun tulos:");
@@ -109,8 +125,8 @@ public class TekstiLiittyma {
 
             for (int j = 1; j < loydetytRivit.length; j++) {
                 if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
-                   // Tiedostot loydetty = luetutTiedostot.get(i - 1);
-                     Tiedostot loydetty = (Tiedostot) luetutTiedostot.getJoustavaListaItem(i - 1);
+                    // Tiedostot loydetty = luetutTiedostot.get(i - 1);
+                    Tiedostot loydetty = (Tiedostot) luetutTiedostot.getJoustavaListaItem(i - 1);
                     if (!tiedostonNimiTulostettu) {
                         System.out.println("Tiedostosta: " + loydetty.getTiedostonNimi() + " löytyivät rivit: ");
                         tiedostonNimiTulostettu = true;

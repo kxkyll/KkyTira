@@ -43,7 +43,7 @@ public class JoustavaTaulukko {
     
     /**
      * Konstruktori, joka alustaa joustavan taulukon Tiedosto-tyyppisillä olioilla
-     * @param t, parametri ilmaisee että kyseessä on Tiedostot tyyppisiä olioita
+     * @param t 
      */
     public JoustavaTaulukko(char t ) {
         this.joustavaTaulukko = new Tiedostot [100];

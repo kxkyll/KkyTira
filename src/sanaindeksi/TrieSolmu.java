@@ -41,6 +41,9 @@ public class TrieSolmu {
         alustaSijaintiTekstissa();
     }
 
+    /**
+     *
+     */
     public TrieSolmu() {
         System.out.println("TrieSolmun tyhjä konstruktori");
         //todo: tarvitaanko tätä
@@ -206,7 +209,9 @@ public class TrieSolmu {
      */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
         //boolean onnistui = this.lapsiLista.add(uusiLapsi);
-        boolean onnistui = this.lapsiLista.lisaaSolmu(uusiLapsi);
+       // Testataan toimiiko järjestetty lista
+        //boolean onnistui = this.lapsiLista.lisaaSolmu(uusiLapsi);
+        boolean onnistui = this.lapsiLista.lisaaSolmuJarjesttyynListaan(uusiLapsi);
         if (onnistui) {
             return uusiLapsi;
         }

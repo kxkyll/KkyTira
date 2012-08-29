@@ -12,6 +12,11 @@ import sanaindeksi.TrieSolmu;
  */
 public class LisaysJarjestaminen {
 
+    /**
+     *
+     * @param jarjestettavaLista
+     * @return
+     */
     public static LinkitettyLista jarjesta(LinkitettyLista jarjestettavaLista) {
         LinkitettyLista seuraava = jarjestettavaLista.getSeuraava();
         while (seuraava != null) {
