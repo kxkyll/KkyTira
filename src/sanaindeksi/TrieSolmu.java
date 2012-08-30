@@ -210,8 +210,8 @@ public class TrieSolmu {
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
         //boolean onnistui = this.lapsiLista.add(uusiLapsi);
        // Testataan toimiiko järjestetty lista
-        //boolean onnistui = this.lapsiLista.lisaaSolmu(uusiLapsi);
-        boolean onnistui = this.lapsiLista.lisaaSolmuJarjesttyynListaan(uusiLapsi);
+        boolean onnistui = this.lapsiLista.lisaaSolmu(uusiLapsi);
+        //boolean onnistui = this.lapsiLista.lisaaSolmuJarjesttyynListaan(uusiLapsi);
         if (onnistui) {
             return uusiLapsi;
         }
