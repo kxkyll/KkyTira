@@ -7,21 +7,20 @@ import sanaindeksi.Tiedostot;
 
 /**
  *
- * @author Kati
  * JoustavaTaulukko olio korvaa Sanahaku ohjelmassa tarvittavat
  * osat ArrayList rakenteesta
+ * @author Kati
  
  */
 public class JoustavaTaulukko {
 
  /**
  *
- * @author Kati 
- * 
  *
  * Sisältää dataoliot joustavaTaulukko joka on joustavan mittainen
  * yksiulotteinen taulukko, oletuskoko 100 alkiota i, joka on indeksi taulukon
  * ensimmäiseen tyhjään alkioon ja ilmaisee samalla myös taulukon täyttöasteen
+ * @author Kati 
  */
 
     

@@ -10,10 +10,10 @@ import apurakenteet.JoustavaTaulukko;
 
 /**
  *
- * @author Kati
- * Tiedostot luokka on tieto-olio, joka sisältää
+  * Tiedostot luokka on tieto-olio, joka sisältää
  * tiedoston nimen String tyyppisessä oliossa ja
  * joustavan mittaisen taulukon
+ * @author Kati
  * 
  */
 public class Tiedostot {

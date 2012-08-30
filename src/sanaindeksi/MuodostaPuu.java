@@ -8,11 +8,9 @@ import apurakenteet.JoustavaTaulukko;
 
 /**
  *
- * @author Kati
- *
  * Tutkitaan käyttäjän antamien parametrien perusteella minkälainen puurakenne
  * tiedostosta muodostetaan. Oletusarvoisesti muodostetaan perusTrie
- *
+ * @author Kati
  *
  */
 public class MuodostaPuu {
@@ -23,7 +21,8 @@ public class MuodostaPuu {
     Trie trie = new Trie();
 
     /**
-     *
+     * Konstruktori joka saa parametrinaan luetun tiedoston rivit taulukoituna sekä 
+     * tiedoston numeron joista trie-hakupuu luodaan
      * @param tiedostonRivit Merkkijonoja sisältävä joustava taulukko, jossa
      * kukin tiedoston rivi on omalla rivillään
      * @param tiedostoNumero Viite siihen monesko tiedosto on käsittelyssä
@@ -35,7 +34,7 @@ public class MuodostaPuu {
     }
 
     /**
-     *
+     * Tyhjä konstruktori
      */
     public MuodostaPuu() {
     }
@@ -75,7 +74,7 @@ public class MuodostaPuu {
     }
 
     /**
-     *
+     * Metodi haeSana hakee parametrina saavansa sanan esiintyvyyttä hakupuusta
      * @param haettavaSana sana, jota etsitään luetuista tiedostoista
      * @return loydetytRivit kertoo millä riveillä kussakin tiedostossa haettava
      * sana esiintyy

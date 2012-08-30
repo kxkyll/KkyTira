@@ -13,7 +13,8 @@ import tiedostonkasittely.TiedostonLuku;
 
 /**
  *
- * @author Kati SanaHakuohjelman tekstipohjainen käyttöliittymä
+ * SanaHakuohjelman tekstipohjainen käyttöliittymä
+ * @author Kati 
  */
 public class TekstiLiittyma {
 

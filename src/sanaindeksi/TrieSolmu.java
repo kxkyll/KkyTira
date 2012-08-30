@@ -9,9 +9,10 @@ import java.util.LinkedList;
 
 /**
  *
- * @author Kati Trie rakenteen toteutus, juurisolmu ei sisällä dataa, muut
+ * Trie rakenteen toteutus, juurisolmu ei sisällä dataa, muut
  * solmut sisältävät data-osassaan sanan yhden kirjaimen sekä listan
  * lapsisolmuista
+ * @author Kati 
  *
  */
 public class TrieSolmu {
@@ -42,7 +43,7 @@ public class TrieSolmu {
     }
 
     /**
-     *
+     * Trie Solmun tyhjä konstruktori
      */
     public TrieSolmu() {
         System.out.println("TrieSolmun tyhjä konstruktori");
@@ -50,7 +51,8 @@ public class TrieSolmu {
     }
 
     /**
-     *
+     * Metodi setSananVikaKirjain asettaa sanan viimeisen kirjaimen parametriksi 
+     * tiedon siitä, että kyseessä on jonkin sanan viimeinen kirjain
      * @param sananVikaKirjain ilmaisee onko tämä kirjain jonkin sanan viimeinen
      * kirjain
      */

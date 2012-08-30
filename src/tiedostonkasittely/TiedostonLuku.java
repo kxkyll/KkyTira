@@ -15,8 +15,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Kati TiedostonLuku luokka hoitaa tiedostonlukemisen käyttäjän antaman
+ * TiedostonLuku luokka hoitaa tiedostonlukemisen käyttäjän antaman
  * tiedostosijainnin perusteella
+ * @author Kati 
  */
 public class TiedostonLuku {
 

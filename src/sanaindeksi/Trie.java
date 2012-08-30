@@ -6,8 +6,9 @@ package sanaindeksi;
 
 /**
  *
- * @author Kati
+ * 
  * Trie luokka sisältää Trie hakupuun ja sen metodit
+ * @author Kati
  */
 public class Trie {
 

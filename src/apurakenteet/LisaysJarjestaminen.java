@@ -8,16 +8,18 @@ import sanaindeksi.TrieSolmu;
 
 /**
  *
+ * Lisaysjarjestminen luokka järjestää linkitetyn listan lisäysjärjestämis-algoritmia käyttäen
  * @author Kati
  */
 public class LisaysJarjestaminen {
 
     /**
-     *
-     * @param jarjestettavaLista
-     * @return
+     * Metodi jarjesta järjestää parametrina saamansa linkitetyn listan aakkosjärjestykseen
+     * ja palauttaa järjestetyn listan kutsuvalle metodille
+     * @param jarjestettavaLista lista joka halutaan järjestää
+     * @return palauttaa järjestetyn listan tyyppiä LinkitettyLista
      */
-    public static LinkitettyLista jarjesta(LinkitettyLista jarjestettavaLista) {
+    public LinkitettyLista jarjesta(LinkitettyLista jarjestettavaLista) {
         LinkitettyLista seuraava = jarjestettavaLista.getSeuraava();
         while (seuraava != null) {
 

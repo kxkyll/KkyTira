@@ -7,6 +7,8 @@ package apurakenteet;
 import sanaindeksi.TrieSolmu;
 
 /**
+ * LinkitettyLista on yksisuuntainen linkitetty lista joka sisältää data-oliona
+ * TrieSolmu tyyppisen muuttujan sekä linkin seuraavaan lista-olioon
  *
  * @author Kati
  */
@@ -16,7 +18,8 @@ public class LinkitettyLista {
     private LinkitettyLista seuraava;
 
     /**
-     * Konstruktori asettaa listaSolmun ja osoittimen seuraavaan listan alkioon arvoon null
+     * Konstruktori asettaa listaSolmun ja osoittimen seuraavaan listan alkioon
+     * arvoon null
      */
     public LinkitettyLista() {
         this.listaSolmu = null;
@@ -24,8 +27,10 @@ public class LinkitettyLista {
     }
 
     /**
-     * Konstruktori asettaa listan muttujaan listaSolmu parametrinaan saavansa arvot
-     * listan seuraavaan solmuun osoittava osoitin nimeltä seuraava asetetaan arvon null
+     * Konstruktori asettaa listan muttujaan listaSolmu parametrinaan saavansa
+     * arvot listan seuraavaan solmuun osoittava osoitin nimeltä seuraava
+     * asetetaan arvon null
+     *
      * @param solmu luotavan listan muuttujaan asetettavat arvot
      */
     public LinkitettyLista(TrieSolmu solmu) {
@@ -34,9 +39,11 @@ public class LinkitettyLista {
     }
 
     /**
-     * Konstruktori asettaa listan muuttujaan listaSolmu parametrilla listaSolmu saavansa arvot
-     * ja listan seuraavaan solmuun osoittava osoitin nimeltä seuraava asetetaan parametrina saadun
-     * muuttujan seuraava osoittamaan arvoon
+     * Konstruktori asettaa listan muuttujaan listaSolmu parametrilla listaSolmu
+     * saavansa arvot ja listan seuraavaan solmuun osoittava osoitin nimeltä
+     * seuraava asetetaan parametrina saadun muuttujan seuraava osoittamaan
+     * arvoon
+     *
      * @param listaSolmu
      * @param seuraava
      */
@@ -46,7 +53,8 @@ public class LinkitettyLista {
     }
 
     /**
-     * palauttaa tämän listan alkion datakenttien arvot
+     * palauttaa tämän listan alkion tieto-olion datakenttien arvot
+     *
      * @return
      */
     public TrieSolmu getListaSolmu() {
@@ -54,6 +62,7 @@ public class LinkitettyLista {
     }
 
     /**
+     * palauttaa tämän listan seuraavan lista-olion
      *
      * @return
      */
@@ -62,14 +71,17 @@ public class LinkitettyLista {
     }
 
     /**
+     * asettaa listan tieto-olion listaSolmun arvoksi parametrinaan saavansa
+     * muuttujan arvot
      *
-     * @param listaSolmu
+     * @param listaSolmu listan tieto-olioon talletettavat arvot
      */
     public void setListaSolmu(TrieSolmu listaSolmu) {
         this.listaSolmu = listaSolmu;
     }
 
     /**
+     * asettaa linkin listan seuraavaan lista-olioon
      *
      * @param seuraava
      */
@@ -78,6 +90,7 @@ public class LinkitettyLista {
     }
 
     /**
+     * lisää uuden solmun listan viimeiseksi
      *
      * @param uusiSolmu
      * @return
@@ -96,22 +109,23 @@ public class LinkitettyLista {
         return true;
     }
 
-    
     /**
+     * Lisätään järjestettyyn lapsilistaan uusi solmu. Solmut ovat
+     * lexicograafisessa järjestyksessä
      *
-     * @param uusiSolmu
-     * @return
+     * @param uusiSolmu lisättävä solmu
+     * @return palauttaa true jos lisääminen onnistui
      */
     public boolean lisaaSolmuJarjesttyynListaan(TrieSolmu uusiSolmu) {
-        
+
         System.out.println("lisaaSolmuJarjestettyynListaan");
         System.out.println("Ennen lisäystä");
         tulostaLista();
         LinkitettyLista apuAlkio = null;
         LinkitettyLista nykyinenAlkio = this;
-        System.out.println("nykyinen ennen lisäystä: " +nykyinenAlkio.getListaSolmu().getKirjain());
+        System.out.println("nykyinen ennen lisäystä: " + nykyinenAlkio.getListaSolmu().getKirjain());
         LinkitettyLista seuraavaAlkio = nykyinenAlkio.getSeuraava();
-        
+
         while (seuraavaAlkio != null) {
             System.out.println("seuraava ei null");
             if (uusiSolmu.getKirjain() > nykyinenAlkio.getListaSolmu().getKirjain()) {
@@ -124,35 +138,39 @@ public class LinkitettyLista {
             }
         }
         if (seuraavaAlkio != null) {
-            System.out.println("seuraava ennen: " +nykyinenAlkio.getSeuraava().getListaSolmu().getKirjain());
+            System.out.println("seuraava ennen: " + nykyinenAlkio.getSeuraava().getListaSolmu().getKirjain());
             nykyinenAlkio.setSeuraava(new LinkitettyLista(uusiSolmu, apuAlkio));
-            
+
             //nykyinenAlkio.seuraava.setSeuraava(apuAlkio);
-            System.out.println("seuraava jälkeen: " +nykyinenAlkio.getSeuraava().getListaSolmu().getKirjain());
+            System.out.println("seuraava jälkeen: " + nykyinenAlkio.getSeuraava().getListaSolmu().getKirjain());
             System.out.println("Lisätty väliin");
             tulostaLista();
             return true;
         } else {
             System.out.println("Lisätty loppuun");
-            
+
             nykyinenAlkio.setSeuraava(new LinkitettyLista(uusiSolmu, null));
             tulostaLista();
             return true;
         }
-        
+
     }
 
     /**
-     *
+     * palauttaa Linkitetyn listan
      * @return
      */
     public LinkitettyLista getLinkitettyLista() {
         return this;
     }
-    
+
+    /**
+     * tulostaa Listan alkiot, käytetty testauksen apuvälineenä
+     * 
+     */
     private void tulostaLista() {
         System.out.println("Listalla: ");
-            LinkitettyLista listanSeuraava = this.getSeuraava();
+        LinkitettyLista listanSeuraava = this.getSeuraava();
         while (listanSeuraava != null) {
             System.out.println(listanSeuraava.getListaSolmu().getKirjain());
             listanSeuraava = listanSeuraava.getSeuraava();
