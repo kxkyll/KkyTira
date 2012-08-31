@@ -4,6 +4,8 @@
  */
 package sanaindeksi;
 
+import apurakenteet.JoustavaKaksiulotteinenTaulukko;
+
 /**
  *
  * 
@@ -80,7 +82,8 @@ public class Trie {
      * 
      * Mikäli sanaa ei löydy, metodi palauttaa arvon null
      */
-    public int[][] etsiSana(String sana) {
+//    public int[][] etsiSana(String sana) {
+        public JoustavaKaksiulotteinenTaulukko etsiSana(String sana) {
         //System.out.println("Metodi etsiSana");
         //System.out.println("etsittävä sana: " + sana);
 

@@ -4,8 +4,8 @@
  */
 package sanaindeksi;
 
+import apurakenteet.JoustavaKaksiulotteinenTaulukko;
 import apurakenteet.LinkitettyLista;
-import java.util.LinkedList;
 
 /**
  *
@@ -19,7 +19,8 @@ public class TrieSolmu {
 
     private char kirjain;
     private boolean sananVikaKirjain;
-    private int[][] sijaintiTekstissa;
+    //private int[][] sijaintiTekstissa;
+    private JoustavaKaksiulotteinenTaulukko sijaintiTekstissa;
     private int sarake;
     //private LinkedList<TrieSolmu> lapsiLista;
     private LinkitettyLista lapsiLista;
@@ -35,20 +36,24 @@ public class TrieSolmu {
         //System.out.println("TrieSolmun konstruktori");
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
-        this.sijaintiTekstissa = new int[10][10];
+    //    this.sijaintiTekstissa = new int[10][10];
+        this.sijaintiTekstissa = new JoustavaKaksiulotteinenTaulukko(1);
+        
         this.sarake = 1;
-        //this.lapsiLista = new LinkedList<TrieSolmu>();
+        
         this.lapsiLista = new LinkitettyLista(this);
-        alustaSijaintiTekstissa();
+        //alustaSijaintiTekstissa();
+        this.sijaintiTekstissa.alustaPienimmallaMahdollisella();
+        
     }
 
     /**
      * Trie Solmun tyhjä konstruktori
      */
-    public TrieSolmu() {
-        System.out.println("TrieSolmun tyhjä konstruktori");
-        //todo: tarvitaanko tätä
-    }
+//    public TrieSolmu() {
+//        System.out.println("TrieSolmun tyhjä konstruktori");
+//        //todo: tarvitaanko tätä
+//    }
 
     /**
      * Metodi setSananVikaKirjain asettaa sanan viimeisen kirjaimen parametriksi 
@@ -60,17 +65,6 @@ public class TrieSolmu {
         this.sananVikaKirjain = sananVikaKirjain;
     }
 
-    /**
-     * alustaa sijaintiTekstissa taulukon sisällön asettamalla jokaiseen
-     * taulukon alkioon pienimmän mahdollisen kokonaisluvun Integer.MIN_VALUE
-     */
-    public void alustaSijaintiTekstissa() {
-        for (int i = 0; i < sijaintiTekstissa.length; i++) {
-            for (int j = 0; j < sijaintiTekstissa[0].length; j++) {
-                sijaintiTekstissa[i][j] = Integer.MIN_VALUE;
-            }
-        }
-    }
 
     /**
      * Metodi setSijaintiTekstissa tallentaa sijaintiTekstissa-taulukkoon sanan
@@ -83,26 +77,7 @@ public class TrieSolmu {
      *
      */
     public void setSijaintiTekstissa(int tiedostoNumero, int riviNumero) {
-//        System.out.println("tiedostoNumero: " + tiedostoNumero);
-//        System.out.println("riviNumero: " + riviNumero);
-        int rivi = sijaintiTekstissa.length;
-//        System.out.println("rivi (taulukon pituus): " + rivi);
-//        System.out.println("taulukon leveys: " + sijaintiTekstissa[0].length);
-
-        if (tiedostoNumero < rivi && sarake < sijaintiTekstissa[0].length) {
-            //           System.out.println("laitetaan rivinumero taulukkoon");
-            //           System.out.println("sarake: " + sarake);
-
-            sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
-            sarake++;
-        } else {
-//            System.out.println("SijaintiTekstissa taulukko täynnä: ");
-            int[][] uusiTaulu = new int[sijaintiTekstissa[0].length * 2][sijaintiTekstissa.length * 2];
-            uusiTaulu = siirraTaulukonTiedot(uusiTaulu, sijaintiTekstissa);
-            sijaintiTekstissa = uusiTaulu;
-            sijaintiTekstissa[tiedostoNumero][sarake] = riviNumero;
-            sarake++;
-        }
+        sijaintiTekstissa.lisaaKaksiulotteiseenJoustavaanTaulukkoon(tiedostoNumero, riviNumero);
     }
 
     /**
@@ -148,10 +123,11 @@ public class TrieSolmu {
     }
 
     /**
-     *
+     *  getSijaintiTekstissa palauttaa kaksiulotteisen joustavan taulukon
+     * joka sisältää etsityn sanan esiintymiskohdat ladatuissa tiedostoissa
      * @return palauttaa sanan sijaintitaulun
      */
-    public int[][] getSijaintiTekstissa() {
+    public JoustavaKaksiulotteinenTaulukko getSijaintiTekstissa() {
         //System.out.println("getSijaintiTekstissa");
         return sijaintiTekstissa;
     }
@@ -168,35 +144,13 @@ public class TrieSolmu {
      */
     public TrieSolmu etsiKirjain(char kirjain) {
         //System.out.println("etsiKirjain " + kirjain);
-//        for (TrieSolmu l : lapsiLista) {
-//            //System.out.println("l.getKirjain: " + l.getKirjain());
-//            //System.out.println("kirjain: " + kirjain);
-//            if (l.getKirjain() == kirjain) {
-//              //  System.out.println("kirjain täsmää");
-//                return l;
-//            }
-//        }
-//        System.out.println("oma kirjain: " + this.getKirjain());
-//        System.out.println("lapsilista: ");
-//        LinkitettyLista s = this.lapsiLista.getSeuraava();
-//        int i = 0;
-//        while (s != null) {
-//            System.out.println("listan alkio " + i + ": " + s.getListaSolmu().getKirjain());
-//            s = s.getSeuraava();
-//            i++;
-//        }
-
-
-
         LinkitettyLista seuraava = this.lapsiLista.getSeuraava();
         while (seuraava != null) {
-           // System.out.println("lapsilistan seuraavana on kirjain: " + seuraava.getListaSolmu().getKirjain());
             if (seuraava.getListaSolmu().getKirjain() == kirjain) {
                 return seuraava.getListaSolmu();
             } else {
                 seuraava = seuraava.getSeuraava();
             }
-            
         }
         return null;
     }
@@ -210,39 +164,12 @@ public class TrieSolmu {
      *
      */
     public TrieSolmu lisaaLapsi(TrieSolmu uusiLapsi) {
-        //boolean onnistui = this.lapsiLista.add(uusiLapsi);
-       // Testataan toimiiko järjestetty lista
         boolean onnistui = this.lapsiLista.lisaaSolmu(uusiLapsi);
-        //boolean onnistui = this.lapsiLista.lisaaSolmuJarjesttyynListaan(uusiLapsi);
         if (onnistui) {
             return uusiLapsi;
         }
         return null;
     }
 
-    /**
-     * Metodi siirtää taulukossa olevat sijaintitiedot lähdetaulusta
-     * kohdetauluun ja alustaa kohdetaulun tyhjäksijäävät alkiot arvolla
-     * Integer.MIN_VALUE Metodia kutsutaan kun sijaintiTekstissa taulukko on
-     * täyttynyt ja sen kokoa kasvatetaan
-     *
-     * @return, jos lapsiSolmun lisääminen onnistui metodi palauttaa viitteen
-     * lapsiSolmuun, muutoin metodi palauttaa arvon null
-     *
-     * @param int [][] kohdeTaulu taulukko, johon kopioidaan tietoa
-     *
-     */
-    private int[][] siirraTaulukonTiedot(int[][] kohdeTaulu, int[][] lahdeTaulu) {
-        for (int i = 0; i < kohdeTaulu.length; i++) {
-            for (int j = 0; j < kohdeTaulu[0].length; j++) {
-                if (i < lahdeTaulu.length && j < lahdeTaulu[0].length) {
-                    kohdeTaulu[i][j] = lahdeTaulu[i][j];
-                } else {
-                    kohdeTaulu[i][j] = Integer.MIN_VALUE;
-                }
-
-            }
-        }
-        return kohdeTaulu;
-    }
+    
 }

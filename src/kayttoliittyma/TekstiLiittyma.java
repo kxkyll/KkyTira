@@ -4,6 +4,7 @@
  */
 package kayttoliittyma;
 
+import apurakenteet.JoustavaKaksiulotteinenTaulukko;
 import apurakenteet.JoustavaTaulukko;
 import java.io.IOException;
 import java.util.Scanner;
@@ -14,7 +15,8 @@ import tiedostonkasittely.TiedostonLuku;
 /**
  *
  * SanaHakuohjelman tekstipohjainen käyttöliittymä
- * @author Kati 
+ *
+ * @author Kati
  */
 public class TekstiLiittyma {
 
@@ -37,8 +39,6 @@ public class TekstiLiittyma {
         boolean lisaaTiedostoja = true;
         int tiedostoLaskuri = 0;
         JoustavaTaulukko luettuTiedosto = new JoustavaTaulukko();
-        //ArrayList<String> luettuTiedosto = new ArrayList<String>();
-        //  luetutTiedostot = new ArrayList<Tiedostot>();
         luetutTiedostot = new JoustavaTaulukko('t');
         System.out.println("Anna ladattavan tiedoston hakupolku ja nimi (tyhjä merkkijono lopettaa)");
         while (jatka) {
@@ -49,42 +49,49 @@ public class TekstiLiittyma {
                 } else {
                     System.out.println("Annoit tiedoston: " + ladattavaTiedosto);
                     if (ladattavaTiedosto.endsWith("txt")) {
-                        long tiedostonLukemisenAloitusHetki = System.currentTimeMillis();
+                        long tiedostonKasittelynAloitusHetki = System.currentTimeMillis();
+                        long tiedostonKasittelynAloitusHetkiNs = System.nanoTime();
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
-                        
-                        if (luettuTiedosto != null) {
-                            //System.out.println("luetutTiedostot: " + luetutTiedostot.toString());
-                            luetutTiedostot.lisaaJoustavaanTaulukkoon(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
-                            //luetutTiedostot.add(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
+                        long tiedostonKasittelynLopetusHetki = System.currentTimeMillis();
+                        long tiedostonKasittelynLopetusHetkiNs = System.nanoTime();
+                        long puunMuodostamisenAloitusHetki = System.currentTimeMillis();
+                        long puunMuodostamisenAloitusHetkiNs = System.nanoTime();
 
-//                            System.out.println("Tiedoston sisältö:");
-//                            String [] apuTaulukko = luettuTiedosto.getJoustavaLista();
-//                            for (String rivi : apuTaulukko) {
-//                                System.out.println(rivi);
-//                            }
-//                            for (int i = 0; i< luettuTiedosto.getI();i++) {
-//                                System.out.println(luettuTiedosto.getJoustavaListaItem(i));
-//                            }
+                        if (luettuTiedosto != null) {
+
+                            luetutTiedostot.lisaaJoustavaanTaulukkoon(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
+
+                            tiedostonKasittelynLopetusHetki = System.currentTimeMillis();
+                            tiedostonKasittelynLopetusHetkiNs = System.nanoTime();
+
                             tiedostoLaskuri++;
-//                            System.out.println("tiedostoLaskuri: " + tiedostoLaskuri);
+                            puunMuodostamisenAloitusHetki = System.currentTimeMillis();
+                            puunMuodostamisenAloitusHetkiNs = System.nanoTime();
+
                             if (muodostaPuu != null) {
-//                                System.out.println("Muodostapuu ei ole null, lisätään tiedosto");
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             } else {
-//                                System.out.println("MuodostaPuu on null, luodaan uusi puu");
                                 muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
                             }
                         } else {
+                            puunMuodostamisenAloitusHetki = System.currentTimeMillis();
+                            puunMuodostamisenAloitusHetkiNs = System.nanoTime();
                             System.out.println("Tiedostonnimi virheellinen");
                         }
                         long puunMuodostamisenLopetusHetki = System.currentTimeMillis();
-                        System.out.println("Tiedoston lukeminen ja puun muodostus veivät: "+(puunMuodostamisenLopetusHetki - tiedostonLukemisenAloitusHetki)   + " millisekuntia");
+                        long puunMuodostamisenLopetusHetkiNs = System.nanoTime();
+                        System.out.println("Tiedoston käsittely vei: " + (tiedostonKasittelynLopetusHetki - tiedostonKasittelynAloitusHetki) + " millisekuntia");
+                        System.out.println("Tiedoston käsittely vei: " + ((tiedostonKasittelynLopetusHetkiNs - tiedostonKasittelynAloitusHetkiNs) / 1000) + " mikrosekuntia");
+                        System.out.println("Puun muodostaminen vei: " + (puunMuodostamisenLopetusHetki - puunMuodostamisenAloitusHetki) + " millisekuntia");
+                        System.out.println("Puun muodostaminen vei: " + ((puunMuodostamisenLopetusHetkiNs - puunMuodostamisenAloitusHetkiNs) / 1000) + " mikrosekuntia");
                     }
+
+
                     if (ladattavaTiedosto.endsWith("html")) {
                         tiedostonLuku.lueTiedostoNetista(ladattavaTiedosto);
                     }
                 }
-                
+
             }
 
             String haettavaSana = kysySana();
@@ -92,16 +99,27 @@ public class TekstiLiittyma {
                 jatka = false;
             } else {
                 long haunAloitusHetki = System.currentTimeMillis();
-                int[][] loydetytRivit = muodostaPuu.haeSana(haettavaSana);
+                long haunAloitusHetkiNs = System.nanoTime();
+                //int[][] loydetytRivit = muodostaPuu.haeSana(haettavaSana);
+                JoustavaKaksiulotteinenTaulukko loydetytRivit = muodostaPuu.haeSana(haettavaSana);
                 long haunLopetusHetki = System.currentTimeMillis();
-
+                long haunLopetusHetkiNs = System.nanoTime();
+                long hakuYhteensa = haunLopetusHetki - haunAloitusHetki;
+                long hakuYhteensaMikroSek = (haunLopetusHetkiNs - haunAloitusHetkiNs) / 1000;
                 if (loydetytRivit != null) {
                     long tulostuksenAloitusHetki = System.currentTimeMillis();
+                    long tulostuksenAloitusHetkiNS = System.nanoTime();
                     tulostaLoydetytRivit(loydetytRivit);
                     long tulostuksenLopetusHetki = System.currentTimeMillis();
+                    long tulostuksenLopetusHetkiNS = System.nanoTime();
+                    long tulostusYhteensa = tulostuksenLopetusHetki - tulostuksenAloitusHetki;
+                    long tulostusYhteensaMikroSek = (tulostuksenLopetusHetkiNS - tulostuksenAloitusHetkiNS) / 1000;
                     System.out.println("Hakeminen vei:                      " + (haunLopetusHetki - haunAloitusHetki) + " millisekuntia");
+                    System.out.println("Hakeminen vei: " + hakuYhteensaMikroSek + " mikrosekuntia");
                     System.out.println("Tulostaminen vei:                   " + (tulostuksenLopetusHetki - tulostuksenAloitusHetki) + " millisekuntia");
+                    System.out.println("Tulostaminen vei: " + tulostusYhteensaMikroSek + " mikrosekuntia");
                     System.out.println("Hakeminen ja tulostaminen yhteensä: " + (haunLopetusHetki - haunAloitusHetki) + (tulostuksenLopetusHetki - tulostuksenAloitusHetki) + " millisekuntia");
+                    System.out.println("Hakeminen ja tulostaminen yhteensä: " + (hakuYhteensaMikroSek + tulostusYhteensaMikroSek) + " mikrosekuntia");
                 } else {
                     System.out.println("Haettavaa sanaa " + haettavaSana + " ei löytynyt");
                     System.out.println("Hakeminen vei:                      " + (haunLopetusHetki - haunAloitusHetki) + " millisekuntia");
@@ -119,13 +137,18 @@ public class TekstiLiittyma {
      * @param loydetytRivit taulukko joka sisältää löydettyjen rivien
      * rivinumerot, kukin rivi sisältää yhden tiedoston osumat
      */
-    public void tulostaLoydetytRivit(int[][] loydetytRivit) {
+    //public void tulostaLoydetytRivit(int[][] loydetytRivit) {
+    public void tulostaLoydetytRivit(JoustavaKaksiulotteinenTaulukko loydetytRivit) {
         System.out.println("Haun tulos:");
         Boolean tiedostonNimiTulostettu = false;
-        for (int i = 1; i < loydetytRivit.length; i++) {
+        //for (int i = 1; i < loydetytRivit.length; i++) {
+        for (int i = 1; i < loydetytRivit.getJoustavaTaulukkoLength(); i++) {
 
-            for (int j = 1; j < loydetytRivit.length; j++) {
-                if (loydetytRivit[i][j] > Integer.MIN_VALUE) {
+            //for (int j = 1; j < loydetytRivit.length; j++) {
+            for (int j = 1; j < loydetytRivit.getJoustavaTaulukkoLength(); j++) {
+
+                //if (loydetytRivit.[i][j] > Integer.MIN_VALUE) {
+                if (loydetytRivit.getJoustavaTaulukkoAlkio(i, j) > Integer.MIN_VALUE) {
                     // Tiedostot loydetty = luetutTiedostot.get(i - 1);
                     Tiedostot loydetty = (Tiedostot) luetutTiedostot.getJoustavaListaItem(i - 1);
                     if (!tiedostonNimiTulostettu) {
@@ -135,7 +158,8 @@ public class TekstiLiittyma {
                     //ArrayList<String> loydettyRivit = loydetty.getTiedosto();
                     JoustavaTaulukko loydettyRivit = loydetty.getTiedosto();
                     //System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.get(loydetytRivit[i][j]));
-                    System.out.println("rivi " + ((loydetytRivit[i][j]) + 1) + ": " + loydettyRivit.getJoustavaListaItem(loydetytRivit[i][j]));
+
+                    System.out.println("rivi " + (loydetytRivit.getJoustavaTaulukkoAlkio(i, j) + 1) + ": " + loydettyRivit.getJoustavaListaItem(loydetytRivit.getJoustavaTaulukkoAlkio(i, j)));
 
                 }
 

@@ -40,6 +40,11 @@ public class JoustavaTaulukko {
         this.i = 0;
     }
     
+    public JoustavaTaulukko(int koko) {
+        this.joustavaTaulukko = new Object[koko];
+        this.i = 0;
+    }
+    
     /**
      * Konstruktori, joka alustaa joustavan taulukon Tiedosto-tyyppisillä olioilla
      * @param t 

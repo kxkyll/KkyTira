@@ -4,6 +4,7 @@
  */
 package sanaindeksi;
 
+import apurakenteet.JoustavaKaksiulotteinenTaulukko;
 import apurakenteet.JoustavaTaulukko;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -75,9 +76,10 @@ public class MuodostaPuuTest {
         System.out.println("haeSana");
         String haettavaSana = "";
         MuodostaPuu instance = new MuodostaPuu();
-        int[][] expResult = null;
-        int[][] result = instance.haeSana(haettavaSana);
-        assertArrayEquals(expResult, result);
+        JoustavaKaksiulotteinenTaulukko expResult = null;
+        JoustavaKaksiulotteinenTaulukko result = instance.haeSana(haettavaSana);
+        //assertArrayEquals(expResult, result);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

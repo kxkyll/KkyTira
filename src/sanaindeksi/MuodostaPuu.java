@@ -4,6 +4,7 @@
  */
 package sanaindeksi;
 
+import apurakenteet.JoustavaKaksiulotteinenTaulukko;
 import apurakenteet.JoustavaTaulukko;
 
 /**
@@ -79,10 +80,12 @@ public class MuodostaPuu {
      * @return loydetytRivit kertoo millä riveillä kussakin tiedostossa haettava
      * sana esiintyy
      */
-    public int[][] haeSana(String haettavaSana) {
+    //public int[][] haeSana(String haettavaSana) {
+    public JoustavaKaksiulotteinenTaulukko haeSana(String haettavaSana) {
 //        System.out.println("Metodi haeSana");
-        int[][] loydetytRivit = trie.etsiSana(haettavaSana);
-//        if (loydetytRivit != null) {
+        //int[][] loydetytRivit = trie.etsiSana(haettavaSana);
+        JoustavaKaksiulotteinenTaulukko loydetytRivit = trie.etsiSana(haettavaSana);
+//       if (loydetytRivit != null) {
 //            tulostaRivit(loydetytRivit);
 //        }
         return loydetytRivit;
@@ -95,11 +98,11 @@ public class MuodostaPuu {
      * tiedostoja ja sarakkeet ilmaisevat millä rivillä kyseisessä tiedostossa
      * haettava sana esiintyy
      */
-    private void tulostaRivit(int[][] loydetytRivit) {
+    private void tulostaRivit(JoustavaKaksiulotteinenTaulukko loydetytRivit) {
         System.out.println("tulostaRivit");
-        for (int i = 0; i < loydetytRivit.length; i++) {
-            for (int j = 0; j < loydetytRivit.length; j++) {
-                System.out.print(loydetytRivit[i][j] + " ");
+        for (int i = 0; i < loydetytRivit.getJoustavaTaulukkoLength(); i++) {
+            for (int j = 0; j < loydetytRivit.getJoustavaTaulukkoBreadth(); j++) {
+                System.out.print(loydetytRivit.getJoustavaTaulukkoAlkio(i, j) + " ");
             }
             System.out.println("");
         }
