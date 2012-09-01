@@ -6,6 +6,7 @@ package sanaindeksi;
 
 import apurakenteet.JoustavaKaksiulotteinenTaulukko;
 import apurakenteet.JoustavaTaulukko;
+import apurakenteet.LomitusJarjestaminen;
 
 /**
  * Trie solmu, jossa lapset talletettu dynaamiseen tauluun (DT)
@@ -147,8 +148,21 @@ public class DT_TrieSolmu {
         lapsiTaulukko.lisaaJoustavaanTaulukkoon(uusiLapsi);
         indeksi++;
         //return this;
+        LomitusJarjestaminen lomitusjarjesta = new LomitusJarjestaminen ();
+        lapsiTaulukko = lomitusjarjesta.jarjesta(lapsiTaulukko);
+        tulostaLapsiTaulukko (lapsiTaulukko);
         return uusiLapsi;
         
+    }
+
+    private void tulostaLapsiTaulukko(JoustavaTaulukko taulukko) {
+        System.out.println("tulosta LapsiTaulukko");
+        int i = 0;
+        while (taulukko.getJoustavaListaItem(i) != null) {
+            DT_TrieSolmu apuSolmu = (DT_TrieSolmu) taulukko.getJoustavaListaItem(i);
+            System.out.println(apuSolmu.getKirjain());
+            i++;
+        }
     }
 
     

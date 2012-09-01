@@ -135,6 +135,12 @@ public class JoustavaTaulukko {
 
 
     }
+    
+    public void lisaaAlkioIndeksilla (int ind, Object lisattava) {
+        if (i < joustavaTaulukko.length) {
+            joustavaTaulukko[ind] = lisattava;
+        }
+    }
 
     /**
      * Metodi kasvataJoustavaTaulukko kasvattaa JoustavanTaulukon kokoa
