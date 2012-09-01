@@ -20,7 +20,7 @@ public class DT_TrieSolmu {
     private boolean sananVikaKirjain;
     //private int[][] sijaintiTekstissa;
     private JoustavaKaksiulotteinenTaulukko sijaintiTekstissa;
-    //private int sarake;
+    private int indeksi;
     private JoustavaTaulukko lapsiTaulukko;
 
     /**
@@ -33,11 +33,9 @@ public class DT_TrieSolmu {
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
 //        this.sijaintiTekstissa = new int[10][10];
-//        this.sarake = 1;
         this.sijaintiTekstissa = new JoustavaKaksiulotteinenTaulukko (1);
-        
-        
         this.lapsiTaulukko = new JoustavaTaulukko(20);
+        this.indeksi = 0;
         //alustaSijaintiTekstissa();
     }
 
@@ -123,10 +121,14 @@ public class DT_TrieSolmu {
      *
      */
     public DT_TrieSolmu etsiKirjain(char kirjain) {
-        //System.out.println("etsiKirjain " + kirjain);
+       System.out.println("etsiKirjain " + kirjain);
         for (int ind = 0; ind < lapsiTaulukko.getJoustavaListaLength();ind++) {
             DT_TrieSolmu loydettySolmu = (DT_TrieSolmu)lapsiTaulukko.getJoustavaListaItem(ind);
-            if (loydettySolmu.getKirjain() == kirjain) {
+            if (loydettySolmu == null) {
+                System.out.println("indeksi: " +ind);
+                System.out.println("loydettySolmu on null");
+            }
+            if (loydettySolmu == null || loydettySolmu.getKirjain() == kirjain) {
                 return loydettySolmu;
             }
         }
@@ -140,8 +142,11 @@ public class DT_TrieSolmu {
      * 
      */
     public DT_TrieSolmu lisaaLapsi(DT_TrieSolmu uusiLapsi) {
+        lapsiTaulukko.setI(indeksi);
         lapsiTaulukko.lisaaJoustavaanTaulukkoon(uusiLapsi);
-        return this;
+        indeksi++;
+        //return this;
+        return uusiLapsi;
         
     }
 

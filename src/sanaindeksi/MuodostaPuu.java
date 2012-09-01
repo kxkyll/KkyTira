@@ -71,9 +71,9 @@ public class MuodostaPuu {
 //            }
 
             for (int j = 0; j < rivinSanat.length; j++) {
-//                System.out.println("rivinSanat: " + rivinSanat[j]);
-//                System.out.println("tiedostoNumero: " + tiedostoNumero);
-//                System.out.println("riviNumero: " + riviNumero);
+                System.out.println("rivinSanat: " + rivinSanat[j]);
+                System.out.println("tiedostoNumero: " + tiedostoNumero);
+                System.out.println("riviNumero: " + riviNumero);
                 switch (trieValinta) {
                     case 1:
                         System.out.println("perus");
@@ -90,13 +90,17 @@ public class MuodostaPuu {
             }
             riviNumero++;
         }
-        if (trie != null) {
-            return trie;
-        } else if (dtTrie != null) {
-            return dtTrie;
+        switch (trieValinta) {
+            case 1:
+                return trie;
+            case 2:
+                return dtTrie;
+            default:
+                return trie;
         }
+
         //return trie;
-        return null;
+//        return null;
     }
 
     /**

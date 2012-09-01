@@ -14,6 +14,7 @@ import apurakenteet.JoustavaKaksiulotteinenTaulukko;
 public class DT_Trie {
     
     private DT_TrieSolmu juuriSolmu;
+    //private int indeksi;
 
     public DT_Trie() {
         juuriSolmu = new DT_TrieSolmu (' ');
@@ -31,7 +32,7 @@ public class DT_Trie {
      * @return viite päivitettyyn Trie hakupuuhun
      */
     public DT_Trie lisaaSana(String sana, int tiedostoNumero, int riviNumero) {
-        //System.out.println("lisaaSana");
+        System.out.println("DT lisaaSana");
         DT_TrieSolmu nykyinenSolmu;
         int vikanKirjaimenPaikka;
 
