@@ -99,22 +99,22 @@ public class DT_Trie {
 
                 if (lapsiSolmu != null) {
                     nykyinenSolmu = lapsiSolmu;
-            //        System.out.println("lapsi ei ole null");
+                    System.out.println("lapsi ei ole null, siirrytään taso alemmas");
                 } else {
-              //    System.out.println("oikeaa ei löytynyt");
+                  System.out.println("oikeaa ei löytynyt");
                     return null; // kirjainta ei löytynyt  
                 }
             }
 
             if (nykyinenSolmu.isSananVikaKirjain()) {
-                //System.out.println("on vika kirjain");
+                System.out.println("on vika kirjain");
                 //return true; //kirjaimet löytyivät ja merkkijonon viimeinen kirjain ilmaisee kyseessä olevan sana
                 return nykyinenSolmu.getSijaintiTekstissa();
                 
             }
         }
 
-        //System.out.println("ei löydy ei");
+        System.out.println("ei löydy ei");
         return null;
     }
     

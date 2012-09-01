@@ -36,6 +36,7 @@ public class DT_TrieSolmu {
         this.sijaintiTekstissa = new JoustavaKaksiulotteinenTaulukko (1);
         this.lapsiTaulukko = new JoustavaTaulukko(20);
         this.indeksi = 0;
+        this.sijaintiTekstissa.alustaPienimmallaMahdollisella();
         //alustaSijaintiTekstissa();
     }
 

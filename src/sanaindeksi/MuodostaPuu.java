@@ -113,8 +113,24 @@ public class MuodostaPuu {
     //public int[][] haeSana(String haettavaSana) {
     public JoustavaKaksiulotteinenTaulukko haeSana(String haettavaSana) {
 //        System.out.println("Metodi haeSana");
-        //int[][] loydetytRivit = trie.etsiSana(haettavaSana);
-        JoustavaKaksiulotteinenTaulukko loydetytRivit = trie.etsiSana(haettavaSana);
+        //int[][] loydetytRivit = trie.etsiSana(haettavaSana)
+        JoustavaKaksiulotteinenTaulukko loydetytRivit = null;
+        switch (trieValinta) {
+            case 1:
+                loydetytRivit = trie.etsiSana(haettavaSana);
+                break;
+            case 2:
+                loydetytRivit = dtTrie.etsiSana(haettavaSana);
+                if (loydetytRivit != null) {
+                    tulostaRivit(loydetytRivit);
+                }
+                break;
+            default:
+                loydetytRivit = trie.etsiSana(haettavaSana);
+                break;
+
+        }
+        //JoustavaKaksiulotteinenTaulukko loydetytRivit = trie.etsiSana(haettavaSana);
 //       if (loydetytRivit != null) {
 //            tulostaRivit(loydetytRivit);
 //        }
