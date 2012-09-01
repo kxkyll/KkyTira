@@ -71,7 +71,9 @@ public class TekstiLiittyma {
                             if (muodostaPuu != null) {
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             } else {
-                                muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri);
+                                //muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri, 1);
+                                muodostaPuu = new MuodostaPuu(1);
+                                muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             }
                         } else {
                             puunMuodostamisenAloitusHetki = System.currentTimeMillis();

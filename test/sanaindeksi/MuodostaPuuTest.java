@@ -54,15 +54,15 @@ public class MuodostaPuuTest {
     }
 
     /**
-     * Test of perusTrie method, of class MuodostaPuu.
+     * Test of teeTrie method, of class MuodostaPuu.
      */
     @Test
     public void testPerusTrie() {
         System.out.println("perusTrie");
         int tiedostoNumero = 0;
-        MuodostaPuu instance = new MuodostaPuu();
+        MuodostaPuu instance = new MuodostaPuu(1);
         Trie expResult = null;
-        Trie result = instance.perusTrie(tiedostoNumero);
+        Trie result = (Trie) instance.teeTrie(tiedostoNumero);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -92,9 +92,9 @@ public class MuodostaPuuTest {
         System.out.println("lisaaTiedosto");
         JoustavaTaulukko luettuTiedosto = null;
         int tiedostoLaskuri = 0;
-        MuodostaPuu instance = new MuodostaPuu();
+        MuodostaPuu instance = new MuodostaPuu(1);
         Trie expResult = null;
-        Trie result = instance.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
+        Trie result = (Trie) instance.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

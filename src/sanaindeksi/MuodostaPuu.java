@@ -10,7 +10,8 @@ import apurakenteet.JoustavaTaulukko;
 /**
  *
  * Tutkitaan käyttäjän antamien parametrien perusteella minkälainen puurakenne
- * tiedostosta muodostetaan. Oletusarvoisesti muodostetaan perusTrie
+ * tiedostosta muodostetaan. Oletusarvoisesti muodostetaan teeTrie
+ *
  * @author Kati
  *
  */
@@ -20,18 +21,24 @@ public class MuodostaPuu {
     //private ArrayList<String> tiedostonRivit;
     private JoustavaTaulukko tiedostonRivit;
     Trie trie = new Trie();
+    DT_Trie dtTrie = new DT_Trie();
+    int trieValinta;
 
     /**
-     * Konstruktori joka saa parametrinaan luetun tiedoston rivit taulukoituna sekä 
-     * tiedoston numeron joista trie-hakupuu luodaan
+     * Konstruktori joka saa parametrinaan luetun tiedoston rivit taulukoituna
+     * sekä tiedoston numeron joista trie-hakupuu luodaan
+     *
      * @param tiedostonRivit Merkkijonoja sisältävä joustava taulukko, jossa
      * kukin tiedoston rivi on omalla rivillään
      * @param tiedostoNumero Viite siihen monesko tiedosto on käsittelyssä
      */
-    //public MuodostaPuu(ArrayList<String> tiedostonRivit, int tiedostoNumero) {
-    public MuodostaPuu(JoustavaTaulukko tiedostonRivit, int tiedostoNumero) {
-        this.tiedostonRivit = tiedostonRivit;
-        trie = perusTrie(tiedostoNumero);
+    //public MuodostaPuu(JoustavaTaulukko tiedostonRivit, int tiedostoNumero, int trieValinta) {
+    public MuodostaPuu(int trieValinta) {
+        //this.tiedostonRivit = tiedostonRivit;
+        this.trieValinta = trieValinta;
+
+        //trie = teeTrie(tiedostoNumero);
+
     }
 
     /**
@@ -41,13 +48,14 @@ public class MuodostaPuu {
     }
 
     /**
-     * Luodaan perusTrie, jossa lapset on talletettu linkitetylle listalle
+     * Luodaan teeTrie, jossa lapset on talletettu linkitetylle listalle
      *
      * @param tiedostoNumero
      * @return Trie-hakupuu
      */
-    public Trie perusTrie(int tiedostoNumero) {
-
+    //public Trie teeTrie(int tiedostoNumero) {
+    public Object teeTrie(int tiedostoNumero) {
+        System.out.println("teeTrie");
         int riviNumero = 0;
         //for (String rivi : tiedostonRivit) {
         for (int i = 0; i < tiedostonRivit.getI(); i++) {
@@ -66,16 +74,34 @@ public class MuodostaPuu {
 //                System.out.println("rivinSanat: " + rivinSanat[j]);
 //                System.out.println("tiedostoNumero: " + tiedostoNumero);
 //                System.out.println("riviNumero: " + riviNumero);
-                trie = trie.lisaaSana(rivinSanat[j], tiedostoNumero, riviNumero);
+                switch (trieValinta) {
+                    case 1:
+                        System.out.println("perus");
+                        trie = trie.lisaaSana(rivinSanat[j], tiedostoNumero, riviNumero);
+                        break;
+                    case 2:
+                        dtTrie = dtTrie.lisaaSana(rivinSanat[j], tiedostoNumero, riviNumero);
+                        break;
+                    default:
+                        trie = trie.lisaaSana(rivinSanat[j], tiedostoNumero, riviNumero);
+                        break;
+                }
+
             }
             riviNumero++;
         }
-
-        return trie;
+        if (trie != null) {
+            return trie;
+        } else if (dtTrie != null) {
+            return dtTrie;
+        }
+        //return trie;
+        return null;
     }
 
     /**
      * Metodi haeSana hakee parametrina saavansa sanan esiintyvyyttä hakupuusta
+     *
      * @param haettavaSana sana, jota etsitään luetuista tiedostoista
      * @return loydetytRivit kertoo millä riveillä kussakin tiedostossa haettava
      * sana esiintyy
@@ -94,6 +120,7 @@ public class MuodostaPuu {
     /**
      * Metodi tulostaRivit tulostaa niiden tiedostojen ne rivit ja rivinumerot,
      * joilta haettava sana löytyi
+     *
      * @param loydetytRivit taulukko, missä on rivit esittävät luettuja
      * tiedostoja ja sarakkeet ilmaisevat millä rivillä kyseisessä tiedostossa
      * haettava sana esiintyy
@@ -120,15 +147,17 @@ public class MuodostaPuu {
     //public Trie lisaaTiedosto(ArrayList<String> luettuTiedosto, int tiedostoLaskuri) {
     /**
      * Metodi lisaaTiedosto lisää trie hakupuuhun uuden tiedoston
+     *
      * @param luettuTiedosto käyttäjän antaman tiedoston rivit
      * @param tiedostoLaskuri tiedoston numero
      * @return trie, palauttaa viitteen päivitettyyn trie hakupuuhun
      */
-    public Trie lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
-//        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
+    public Object lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
+        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
         //this.tiedostonRivit = luettuTiedosto;
         this.tiedostonRivit = luettuTiedosto;
-        trie = perusTrie(tiedostoLaskuri);
-        return trie;
+
+        return teeTrie(tiedostoLaskuri);
+
     }
 }
