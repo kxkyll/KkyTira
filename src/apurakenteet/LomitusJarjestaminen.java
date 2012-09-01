@@ -38,15 +38,28 @@ public class LomitusJarjestaminen {
         this.jarjestettava = lapsiTaulukko;
         aputaulu = new JoustavaTaulukko(jarjestettava.getJoustavaListaLength());
         tayttoAste = paljonkoTaulussaAlkioita();
-        return lomitusJarjesta(0, tayttoAste-1);
+        if (tayttoAste <= 1) {
+            return lapsiTaulukko; // ei mitään järjestettävää
+        }
+        if (tayttoAste < 7) { 
+            LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
+            return lisaysJarjesta.jarjestaTaulukko(jarjestettava);
+        } else {
+            return lomitusJarjesta(0, tayttoAste);
+        }
+        //return lapsiTaulukko;
     }
 
     private JoustavaTaulukko lomitusJarjesta(int alku, int loppu) {
         int keskikohta;
+        
         if (alku < loppu) {
             System.out.println("alku "+alku +" < " +loppu +" loppu");
             keskikohta = (alku + loppu) / 2; 
             //double floor = Math.floor((alku +loppu) /2.0);
+            double ceil = Math.ceil((alku+loppu)/2.0);
+            keskikohta = (int) ceil;
+            System.out.println("kattofunktio: " +ceil);
             System.out.println("keskikohta: " +keskikohta);
             //System.out.println("floor: " + floor);
             lomitusJarjesta(alku, keskikohta);
