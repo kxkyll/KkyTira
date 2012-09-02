@@ -7,13 +7,14 @@ package apurakenteet;
 import sanaindeksi.DT_TrieSolmu;
 
 /**
- *
- * @author Kat
+ * Lomitusjarjestminen luokka järjestää linkitetyn taulukon
+ * lomitusjärjestämis-algoritmia käyttäen, jos taulukon koko on alle seitsemän alkiota
+ * käytettään lisäysjärjestämisalgoritmia
+ * @author Kati
  */
 public class LomitusJarjestaminen {
 
-    //private DT_TrieSolmu[] jarjestettava;
-    //private DT_TrieSolmu[] aputaulu;
+    
     private JoustavaTaulukko jarjestettava;
     private JoustavaTaulukko aputaulu;
     private int tayttoAste;
@@ -24,8 +25,11 @@ public class LomitusJarjestaminen {
 //        tayttoAste = paljonkoTaulussaAlkioita();
 //        lomitusJarjesta(0, tayttoAste);
 //    }
+    /**
+     * Konstruktori, ei parametreja
+     */
     public LomitusJarjestaminen() {
-        System.out.println("lomitusJarjestaminen");
+        //System.out.println("lomitusJarjestaminen");
 //        this.jarjestettava = lapsiTaulukko;
 //        aputaulu = new JoustavaTaulukko(jarjestettava.getJoustavaListaLength());
 //        tayttoAste = paljonkoTaulussaAlkioita();
@@ -33,26 +37,37 @@ public class LomitusJarjestaminen {
 
     }
     
+    /**
+     * jarjesta metodi järjestää joustavan mittaisen taulukon
+     */
+    
     public JoustavaTaulukko jarjesta (JoustavaTaulukko lapsiTaulukko) {
-        System.out.println("jarjesta");
+        //System.out.println("jarjesta");
         this.jarjestettava = lapsiTaulukko;
         aputaulu = new JoustavaTaulukko(jarjestettava.getJoustavaListaLength());
         tayttoAste = paljonkoTaulussaAlkioita();
-        System.out.println("täyttöaste: " +tayttoAste);
-        System.out.println("pituus: " + jarjestettava.getJoustavaListaLength());
+       // System.out.println("täyttöaste: " +tayttoAste);
+       // System.out.println("pituus: " + jarjestettava.getJoustavaListaLength());
         if (tayttoAste <= 1) {
             return lapsiTaulukko; // ei mitään järjestettävää
         }
-        LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
-            return lisaysJarjesta.jarjestaTaulukko(jarjestettava);
-//        if (tayttoAste < 7) { 
-//            LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
+//        LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
 //            return lisaysJarjesta.jarjestaTaulukko(jarjestettava);
-//        } else {
-//            return lomitusJarjesta(0, tayttoAste);
-//        }
+        if (tayttoAste < 7) { 
+            LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
+            return lisaysJarjesta.jarjestaTaulukko(jarjestettava);
+        } else {
+            return lomitusJarjesta(0, tayttoAste);
+        }
         //return lapsiTaulukko;
     }
+    
+    /**
+     * Metodi lomitusJarjesta järjestää taulukon lomitusjärjestysalgoritmia käyttäen
+     * @param alku taulukon alkuindeksi
+     * @param loppu taulukon loppuindeksi
+     * @return palauttaa järjstetyn taulukon
+     */
 
     private JoustavaTaulukko lomitusJarjesta(int alku, int loppu) {
         int keskikohta;
@@ -73,6 +88,14 @@ public class LomitusJarjestaminen {
         }
         return jarjestettava;
     }
+    
+    /**
+     * Metodi yhdista yhdistää lomitusjärjestysalgoritmin pilkkomat ja järjestämät taulukonosat
+     * takaisin alkuperäisenpituiseksi taulukoksi
+     * @param alku taulukon osan alkuindeksi
+     * @param keskikohta taulukon osan keskikohta
+     * @param loppu taulukon osan loppuindeksi
+     */
 
     private void yhdista(int alku, int keskikohta, int loppu) {
         System.out.println("yhdista");

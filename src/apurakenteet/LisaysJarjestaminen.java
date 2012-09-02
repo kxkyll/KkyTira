@@ -10,7 +10,7 @@ import sanaindeksi.TrieSolmu;
 
 /**
  *
- * Lisaysjarjestminen luokka järjestää linkitetyn listan
+ * Lisaysjarjestminen luokka järjestää linkitetyn listan tai taulukon
  * lisäysjärjestämis-algoritmia käyttäen
  *
  * @author Kati

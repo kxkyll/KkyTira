@@ -64,6 +64,8 @@ public class JoustavaKaksiulotteinenTaulukko {
      * Metodi getJoustavaTaulukkoAlkio palauttaa indeksien osoittaman alkion 
      * int muodossa
      *
+     * @param i indeksi haluttuun alkioon
+     * @param j indeksi haluttuun alkioon
      * @return palauttaa joustavaTaulukko-objektin indeksien osoittaman alkion
      */
     public int getJoustavaTaulukkoAlkio(int i, int j) {
@@ -76,7 +78,7 @@ public class JoustavaKaksiulotteinenTaulukko {
     
     
     /**
-     * Metodi getSarakeIndeksi palauttaa sarake indeksin i arvon, joka osoittaa
+     * Metodi getSarakeIndeksi palauttaa sarake indeksin arvon, joka osoittaa
      * taulukon rivin ensimmäiseen tyhjään alkioon
      *
      * @return sarakeIndeksi rivin ensimmäinen tyhjä alkio
@@ -95,6 +97,10 @@ public class JoustavaKaksiulotteinenTaulukko {
         return joustavaKaksiulotteinenTaulukko.length;
     }
 
+    /**
+     *
+     * @return palauttaa joustavaKaksiulotteinenTaulukko[0].length;
+     */
     public int getJoustavaTaulukkoBreadth() {
         return joustavaKaksiulotteinenTaulukko[0].length;
     }
@@ -123,6 +129,14 @@ public class JoustavaKaksiulotteinenTaulukko {
             sarakeIndeksi++;
         }
     }
+    
+    /**
+     * Metodi siirraTaulukonTiedot siirtää taulukon tiedot pieneksi jääneestä taulukosta
+     * uuteen suurempaan taulukkoon
+     * @param kohdeTaulu uusi suurempi taulukko jonne tiedot kopioidaan
+     * @param lahdeTaulu vanha taulukko josta tiedot kopioidaan
+     * @return palauttaa taulukon joka on suurempi kuin alkuperäinen, mutta sisältää alkuperäisen tiedot
+     */
 
     private Object[][] siirraTaulukonTiedot(Object[][] kohdeTaulu, Object[][] lahdeTaulu) {
         for (int i = 0; i < kohdeTaulu.length; i++) {
