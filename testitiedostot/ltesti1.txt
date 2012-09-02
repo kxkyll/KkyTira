@@ -1,0 +1,5 @@
+ekarivi
+tokarivi
+kolmasrivi
+neljasrivi
+vikarivi

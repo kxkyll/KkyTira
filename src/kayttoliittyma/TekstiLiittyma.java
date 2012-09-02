@@ -49,24 +49,24 @@ public class TekstiLiittyma {
                 } else {
                     System.out.println("Annoit tiedoston: " + ladattavaTiedosto);
                     if (ladattavaTiedosto.endsWith("txt")) {
-                        long tiedostonKasittelynAloitusHetki = System.currentTimeMillis();
-                        long tiedostonKasittelynAloitusHetkiNs = System.nanoTime();
+                            long tiedostonKasittelynAloitusHetki = System.currentTimeMillis();
+                            long tiedostonKasittelynAloitusHetkiNs = System.nanoTime();
                         luettuTiedosto = tiedostonLuku.lueTiedostoLevylta(ladattavaTiedosto);
-                        long tiedostonKasittelynLopetusHetki = System.currentTimeMillis();
-                        long tiedostonKasittelynLopetusHetkiNs = System.nanoTime();
-                        long puunMuodostamisenAloitusHetki = System.currentTimeMillis();
-                        long puunMuodostamisenAloitusHetkiNs = System.nanoTime();
+                            long tiedostonKasittelynLopetusHetki = System.currentTimeMillis();
+                            long tiedostonKasittelynLopetusHetkiNs = System.nanoTime();
+                            long puunMuodostamisenAloitusHetki = System.currentTimeMillis();
+                            long puunMuodostamisenAloitusHetkiNs = System.nanoTime();
 
                         if (luettuTiedosto != null) {
 
                             luetutTiedostot.lisaaJoustavaanTaulukkoon(new Tiedostot(ladattavaTiedosto, luettuTiedosto));
 
-                            tiedostonKasittelynLopetusHetki = System.currentTimeMillis();
-                            tiedostonKasittelynLopetusHetkiNs = System.nanoTime();
+                                tiedostonKasittelynLopetusHetki = System.currentTimeMillis();
+                                tiedostonKasittelynLopetusHetkiNs = System.nanoTime();
 
                             tiedostoLaskuri++;
-                            puunMuodostamisenAloitusHetki = System.currentTimeMillis();
-                            puunMuodostamisenAloitusHetkiNs = System.nanoTime();
+                                puunMuodostamisenAloitusHetki = System.currentTimeMillis();
+                                puunMuodostamisenAloitusHetkiNs = System.nanoTime();
 
                             if (muodostaPuu != null) {
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
@@ -76,16 +76,16 @@ public class TekstiLiittyma {
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             }
                         } else {
-                            puunMuodostamisenAloitusHetki = System.currentTimeMillis();
-                            puunMuodostamisenAloitusHetkiNs = System.nanoTime();
+                                puunMuodostamisenAloitusHetki = System.currentTimeMillis();
+                                puunMuodostamisenAloitusHetkiNs = System.nanoTime();
                             System.out.println("Tiedostonnimi virheellinen");
                         }
-                        long puunMuodostamisenLopetusHetki = System.currentTimeMillis();
-                        long puunMuodostamisenLopetusHetkiNs = System.nanoTime();
+                            long puunMuodostamisenLopetusHetki = System.currentTimeMillis();
+                            long puunMuodostamisenLopetusHetkiNs = System.nanoTime();
                         System.out.println("Tiedoston käsittely vei: " + (tiedostonKasittelynLopetusHetki - tiedostonKasittelynAloitusHetki) + " millisekuntia");
                         System.out.println("Tiedoston käsittely vei: " + ((tiedostonKasittelynLopetusHetkiNs - tiedostonKasittelynAloitusHetkiNs) / 1000) + " mikrosekuntia");
-                        System.out.println("Puun muodostaminen vei: " + (puunMuodostamisenLopetusHetki - puunMuodostamisenAloitusHetki) + " millisekuntia");
-                        System.out.println("Puun muodostaminen vei: " + ((puunMuodostamisenLopetusHetkiNs - puunMuodostamisenAloitusHetkiNs) / 1000) + " mikrosekuntia");
+                        System.out.println("Puun muodostaminen vei : " + (puunMuodostamisenLopetusHetki - puunMuodostamisenAloitusHetki) + " millisekuntia");
+                        System.out.println("Puun muodostaminen vei : " + ((puunMuodostamisenLopetusHetkiNs - puunMuodostamisenAloitusHetkiNs) / 1000) + " mikrosekuntia");
                     }
 
 
@@ -111,15 +111,16 @@ public class TekstiLiittyma {
                 if (loydetytRivit != null) {
                     long tulostuksenAloitusHetki = System.currentTimeMillis();
                     long tulostuksenAloitusHetkiNS = System.nanoTime();
+                   
                     tulostaLoydetytRivit(loydetytRivit);
                     long tulostuksenLopetusHetki = System.currentTimeMillis();
                     long tulostuksenLopetusHetkiNS = System.nanoTime();
                     long tulostusYhteensa = tulostuksenLopetusHetki - tulostuksenAloitusHetki;
                     long tulostusYhteensaMikroSek = (tulostuksenLopetusHetkiNS - tulostuksenAloitusHetkiNS) / 1000;
-                    System.out.println("Hakeminen vei:                      " + (haunLopetusHetki - haunAloitusHetki) + " millisekuntia");
-                    System.out.println("Hakeminen vei: " + hakuYhteensaMikroSek + " mikrosekuntia");
-                    System.out.println("Tulostaminen vei:                   " + (tulostuksenLopetusHetki - tulostuksenAloitusHetki) + " millisekuntia");
-                    System.out.println("Tulostaminen vei: " + tulostusYhteensaMikroSek + " mikrosekuntia");
+                    System.out.println("Hakeminen vei millisekunteja        " + (haunLopetusHetki - haunAloitusHetki));
+                    System.out.println("Hakeminen vei mikrosekunteja:       " + hakuYhteensaMikroSek );
+                    System.out.println("Tulostaminen vei millisekunteja:    " + (tulostuksenLopetusHetki - tulostuksenAloitusHetki));
+                    System.out.println("Tulostaminen vei mikrosekunteja:    " + tulostusYhteensaMikroSek);
                     System.out.println("Hakeminen ja tulostaminen yhteensä: " + (haunLopetusHetki - haunAloitusHetki) + (tulostuksenLopetusHetki - tulostuksenAloitusHetki) + " millisekuntia");
                     System.out.println("Hakeminen ja tulostaminen yhteensä: " + (hakuYhteensaMikroSek + tulostusYhteensaMikroSek) + " mikrosekuntia");
                 } else {
