@@ -118,16 +118,16 @@ public class JoustavaTaulukko {
      * @param lisattava taulukkoon lisättävä alkio
      */
     public void lisaaJoustavaanTaulukkoon(Object lisattava) {
-        System.out.println("lisätään Joustavaan Taulukkoon");
+//        System.out.println("lisätään Joustavaan Taulukkoon");
         //public boolean lisaaJoustavaanTaulukkoon(String lisattava) {
         if (i < joustavaTaulukko.length) {
-            System.out.println("lisätään indeksin i " + i + " kohdalle");
+  //          System.out.println("lisätään indeksin i " + i + " kohdalle");
             joustavaTaulukko[i] = lisattava;
             i++;
 
         } else {
             kasvataJoustavaTaulukko();
-            System.out.println("lisätään indeksin i " + i + " kohdalle");
+    //        System.out.println("lisätään indeksin i " + i + " kohdalle");
             joustavaTaulukko[i] = lisattava;
             i++;
 
@@ -147,7 +147,7 @@ public class JoustavaTaulukko {
      * kaksinkertaiseksi nykyisestä
      */
     private void kasvataJoustavaTaulukko() {
-        System.out.println("kasvatetaan JoustavaaTaulukkoa");
+      //  System.out.println("kasvatetaan JoustavaaTaulukkoa");
         Object[] apuTaulukko = new Object[joustavaTaulukko.length * 2];
 //        String[] apuTaulukko = new String[joustavaTaulukko.length * 2];
         for (int ind = 0; ind < apuTaulukko.length; ind++) {

@@ -76,7 +76,7 @@ public class MuodostaPuu {
          //       System.out.println("riviNumero: " + riviNumero);
                 switch (trieValinta) {
                     case 1:
-                        System.out.println("perus");
+          //              System.out.println("perus");
                         trie = trie.lisaaSana(rivinSanat[j], tiedostoNumero, riviNumero);
                         break;
                     case 2:
