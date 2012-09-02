@@ -33,12 +33,11 @@ public class DT_TrieSolmu {
     public DT_TrieSolmu(char kirjain) {
         this.kirjain = kirjain;
         this.sananVikaKirjain = false;
-//        this.sijaintiTekstissa = new int[10][10];
         this.sijaintiTekstissa = new JoustavaKaksiulotteinenTaulukko (1);
         this.lapsiTaulukko = new JoustavaTaulukko(20);
         this.indeksi = 0;
         this.sijaintiTekstissa.alustaPienimmallaMahdollisella();
-        //alustaSijaintiTekstissa();
+
     }
 
         /**
@@ -101,7 +100,7 @@ public class DT_TrieSolmu {
      */
 
     public JoustavaTaulukko getLapsiTaulukko() {
-        System.out.println("getLapsiTaulukko");
+        //System.out.println("getLapsiTaulukko");
         return lapsiTaulukko;
     }
 
@@ -123,12 +122,12 @@ public class DT_TrieSolmu {
      *
      */
     public DT_TrieSolmu etsiKirjain(char kirjain) {
-       System.out.println("etsiKirjain " + kirjain);
+      // System.out.println("etsiKirjain " + kirjain);
         for (int ind = 0; ind < lapsiTaulukko.getJoustavaListaLength();ind++) {
             DT_TrieSolmu loydettySolmu = (DT_TrieSolmu)lapsiTaulukko.getJoustavaListaItem(ind);
             if (loydettySolmu == null) {
-                System.out.println("indeksi: " +ind);
-                System.out.println("loydettySolmu on null");
+          //      System.out.println("indeksi: " +ind);
+          //      System.out.println("loydettySolmu on null");
             }
             if (loydettySolmu == null || loydettySolmu.getKirjain() == kirjain) {
                 return loydettySolmu;
@@ -156,9 +155,9 @@ public class DT_TrieSolmu {
     }
 
     private void tulostaLapsiTaulukko(JoustavaTaulukko taulukko) {
-        System.out.println("tulosta LapsiTaulukko");
+        //System.out.println("tulosta LapsiTaulukko");
         int i = 0;
-        while (taulukko.getJoustavaListaItem(i) != null) {
+        while (taulukko.getJoustavaListaItem(i) != null && i < taulukko.getJoustavaListaLength()) {
             DT_TrieSolmu apuSolmu = (DT_TrieSolmu) taulukko.getJoustavaListaItem(i);
             System.out.println(apuSolmu.getKirjain());
             i++;

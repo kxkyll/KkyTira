@@ -72,7 +72,7 @@ public class TekstiLiittyma {
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             } else {
                                 //muodostaPuu = new MuodostaPuu(luettuTiedosto, tiedostoLaskuri, 1);
-                                muodostaPuu = new MuodostaPuu(2);
+                                muodostaPuu = new MuodostaPuu(1);
                                 muodostaPuu.lisaaTiedosto(luettuTiedosto, tiedostoLaskuri);
                             }
                         } else {

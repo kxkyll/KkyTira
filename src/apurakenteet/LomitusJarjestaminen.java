@@ -38,15 +38,19 @@ public class LomitusJarjestaminen {
         this.jarjestettava = lapsiTaulukko;
         aputaulu = new JoustavaTaulukko(jarjestettava.getJoustavaListaLength());
         tayttoAste = paljonkoTaulussaAlkioita();
+        System.out.println("täyttöaste: " +tayttoAste);
+        System.out.println("pituus: " + jarjestettava.getJoustavaListaLength());
         if (tayttoAste <= 1) {
             return lapsiTaulukko; // ei mitään järjestettävää
         }
-        if (tayttoAste < 7) { 
-            LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
+        LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
             return lisaysJarjesta.jarjestaTaulukko(jarjestettava);
-        } else {
-            return lomitusJarjesta(0, tayttoAste);
-        }
+//        if (tayttoAste < 7) { 
+//            LisaysJarjestaminen lisaysJarjesta = new LisaysJarjestaminen();
+//            return lisaysJarjesta.jarjestaTaulukko(jarjestettava);
+//        } else {
+//            return lomitusJarjesta(0, tayttoAste);
+//        }
         //return lapsiTaulukko;
     }
 

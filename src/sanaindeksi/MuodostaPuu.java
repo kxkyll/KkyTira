@@ -55,7 +55,7 @@ public class MuodostaPuu {
      */
     //public Trie teeTrie(int tiedostoNumero) {
     public Object teeTrie(int tiedostoNumero) {
-        System.out.println("teeTrie");
+        //System.out.println("teeTrie");
         int riviNumero = 0;
         //for (String rivi : tiedostonRivit) {
         for (int i = 0; i < tiedostonRivit.getI(); i++) {
@@ -71,9 +71,9 @@ public class MuodostaPuu {
 //            }
 
             for (int j = 0; j < rivinSanat.length; j++) {
-                System.out.println("rivinSanat: " + rivinSanat[j]);
-                System.out.println("tiedostoNumero: " + tiedostoNumero);
-                System.out.println("riviNumero: " + riviNumero);
+         //       System.out.println("rivinSanat: " + rivinSanat[j]);
+         //       System.out.println("tiedostoNumero: " + tiedostoNumero);
+         //       System.out.println("riviNumero: " + riviNumero);
                 switch (trieValinta) {
                     case 1:
                         System.out.println("perus");
@@ -121,9 +121,10 @@ public class MuodostaPuu {
                 break;
             case 2:
                 loydetytRivit = dtTrie.etsiSana(haettavaSana);
-                if (loydetytRivit != null) {
-                    tulostaRivit(loydetytRivit);
-                }
+                // Testitulostus
+//                if (loydetytRivit != null) {
+//                    tulostaRivit(loydetytRivit);
+//                }
                 break;
             default:
                 loydetytRivit = trie.etsiSana(haettavaSana);
@@ -146,7 +147,7 @@ public class MuodostaPuu {
      * haettava sana esiintyy
      */
     private void tulostaRivit(JoustavaKaksiulotteinenTaulukko loydetytRivit) {
-        System.out.println("tulostaRivit");
+       // System.out.println("tulostaRivit");
         for (int i = 0; i < loydetytRivit.getJoustavaTaulukkoLength(); i++) {
             for (int j = 0; j < loydetytRivit.getJoustavaTaulukkoBreadth(); j++) {
                 System.out.print(loydetytRivit.getJoustavaTaulukkoAlkio(i, j) + " ");
@@ -173,7 +174,7 @@ public class MuodostaPuu {
      * @return trie, palauttaa viitteen päivitettyyn trie hakupuuhun
      */
     public Object lisaaTiedosto(JoustavaTaulukko luettuTiedosto, int tiedostoLaskuri) {
-        System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
+        //System.out.println("MuodostaPuu olio, lisaaTiedosto metodi");
         //this.tiedostonRivit = luettuTiedosto;
         this.tiedostonRivit = luettuTiedosto;
 
